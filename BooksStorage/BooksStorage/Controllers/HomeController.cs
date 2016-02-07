@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using BooksStorage.Utils.Converters;
 using FacadeServices;
 using FacadeServices.Factories;
 using FacadeServices.Interfaces;
@@ -19,8 +21,10 @@ namespace BooksStorage.Controllers
         }
         public ActionResult Index()
         {
-            var books= DataService.LoadBooks();
-            return View();
+            var dalBooks= DataService.LoadBooks();
+            var converter = new BooksConverter();
+            var books = dalBooks.Select(converter.Convert).ToList();
+            return View("Index", books);
         }
     }
 }

@@ -1,6 +1,34 @@
-﻿@{
-    ViewBag.Title = "Home";
+﻿@model IEnumerable<DomainModel.BookViewModel>
+@{
+    ViewBag.Title = "Редактор книг";
+    
 }
 
-<h2 class="text-danger text-uppercase">Home</h2>
-
+<table class="books">
+    <tr>
+        <th>название</th>
+        <th>автор(ы)</th>
+        <th>кол-во страниц</th>
+        <th>издательство</th>
+        <th>ISBN</th>
+        <th>год публикации</th>
+        <th></th>
+    </tr>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td><ul class="authors">
+                    @foreach (var author in book.Authors)
+                    {
+                        <li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
+                    }
+                </ul></td>
+            <td>@book.PagesCount</td>
+            <td>@book.Publisher</td>
+            <td>@book.ISBN</td>
+            <td>@string.Format("{0:dd.MM.yyyy}", book.PublishDate) </td>
+            <td></td>
+        </tr>
+    }
+</table>
