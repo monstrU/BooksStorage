@@ -1,4 +1,6 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="../assets/bootstrap/js/bootstrap.js" />
+/// <reference path="../assets/bootstrap/js/npm.js" />
 /// <reference path="../assets/js/jquery.backstretch.js" />
 /// <reference path="../assets/js/jquery-1.11.1.js" />
 /// <reference path="../assets/js/placeholder.js" />
