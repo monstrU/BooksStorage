@@ -550,6 +550,10 @@ footer {
 	text-align: left;
 }
 
+footer  .footer-right {
+	margin-top: 10px;
+}
+
 footer h3 {
 	color: #aaa;
 }
@@ -598,9 +602,11 @@ footer h3 {
 .footer-copyright a:hover, .footer-copyright a:focus { color: #eee; }
 
 .footer-bottom {
-	margin-top: 16px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	margin-top: 60px;
+	padding-top: 15px;
+	padding-bottom: 25px;
+
+	
 	background: #3d3d3d;
 	text-align: center;
 }
