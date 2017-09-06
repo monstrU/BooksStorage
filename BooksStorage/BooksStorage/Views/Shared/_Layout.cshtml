@@ -33,95 +33,99 @@
 </head>
 <body>
 
-<!-- Loader -->
-<div class="loader">
-	<div class="loader-img"></div>
-</div>
-<!-- Top menu -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="top-navbar-1">
-			<ul class="nav navbar-nav">
-				<li><a class="scroll-link" href="#top-content">Top</a></li>
-				<li><a class="scroll-link" href="#services">Services</a></li>
-				<li><a class="scroll-link" href="#portfolio">Work</a></li>
-				<li><a class="scroll-link" href="#testimonials">Clients</a></li>
-				<li><a class="scroll-link" href="#blog">Blog</a></li>
-				<li><a class="scroll-link" href="#footer">Contact</a></li>
-			</ul>
-			<div class="navbar-text navbar-right">
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-dribbble"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-instagram"></i></a>
-				<a href="#"><i class="fa fa-pinterest"></i></a>
-			</div>
-		</div>
+	<!-- Loader -->
+	<div class="loader">
+		<div class="loader-img"></div>
 	</div>
-</nav>
-
-<div class="services-container section-container">
-	<div class="container ">
-		<div class="row">
-			<div class="col-sm-12 services section-description wow fadeIn table-responsive">
-				<h2>Хранилище книг</h2>
-				
-				@RenderBody()
+	<!-- Top menu -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="top-navbar-1">
+				<ul class="nav navbar-nav">
+					<li><a class="scroll-link" href="#top-content">Top</a></li>
+					<li><a class="scroll-link" href="#services">Services</a></li>
+					<li><a class="scroll-link" href="#portfolio">Work</a></li>
+					<li><a class="scroll-link" href="#testimonials">Clients</a></li>
+					<li><a class="scroll-link" href="#blog">Blog</a></li>
+					<li><a class="scroll-link" href="#footer">Contact</a></li>
+				</ul>
+				<div class="navbar-text navbar-right">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-dribbble"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-instagram"></i></a>
+					<a href="#"><i class="fa fa-pinterest"></i></a>
+				</div>
 			</div>
 		</div>
-		
-	</div>
-</div>
-	
-<footer class="footer-container">
-	<div class="container">
-		<div class="row">
+	</nav>
 
-			<div class="col-sm-6 footer-left">
-			</div>
+	<div class="services-container section-container">
+		<div class="container ">
+			<div class="row">
+				<div class="col-sm-12 services section-description wow fadeIn table-responsive">
+					<h2>Хранилище книг</h2>
 
-			<div class="col-sm-5 col-sm-offset-1 footer-right">
-				<div>
-					&copy; Vadim Vedenin 2017
+					@RenderBody()
 				</div>
 			</div>
 
 		</div>
 	</div>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-12 footer-bottom">
-				<a class="scroll-link" href="#top-content"><i class="fa fa-chevron-up"></i></a>
+	<footer class="footer-container">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-6 footer-left">
+				</div>
+
+				<div class="col-sm-5 col-sm-offset-1 footer-right">
+					<div>
+						&copy; Vadim Vedenin 2017
+					</div>
+				</div>
+
 			</div>
 		</div>
-	</div>
-</footer>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 footer-bottom">
+					<a class="scroll-link" href="#top-content"><i class="fa fa-chevron-up"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	@Scripts.Render("~/bundles/scripts")
 	@RenderSection("scripts", required: false)
 
-<!-- Javascript -->
+	<!-- Javascript -->
 <script src="assets/js/jquery-1.11.1.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.backstretch.min.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/retina-1.1.0.min.js"></script>
-<script src="assets/js/waypoints.min.js"></script>
-<script src="assets/js/scripts.js"></script>
+	<!--
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	-->
+	<script src="/Scripts/bootstrap.min.js"></script>
 
-<!--[if lt IE 10]>
-	<script src="assets/js/placeholder.js"></script>
-<![endif]-->
+	<script src="assets/js/jquery.backstretch.min.js"></script>
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/retina-1.1.0.min.js"></script>
+	<script src="assets/js/waypoints.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+
+	<!--[if lt IE 10]>
+		<script src="assets/js/placeholder.js"></script>
+	<![endif]-->
 </body>
 </html>
 
