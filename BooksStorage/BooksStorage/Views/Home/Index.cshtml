@@ -1,34 +1,43 @@
 ﻿@model IEnumerable<DomainModel.BookViewModel>
 @{
-    ViewBag.Title = "Редактор книг";
-    
+	ViewBag.Title = "Редактор книг";
+
 }
 
-<table class="books">
-    <tr>
-        <th>название</th>
-        <th>автор(ы)</th>
-        <th>кол-во страниц</th>
-        <th>издательство</th>
-        <th>ISBN</th>
-        <th>год публикации</th>
-        <th></th>
-    </tr>
-    @foreach (var book in Model)
-    {
-        <tr>
-            <td>@book.Title</td>
-            <td><ul class="authors">
-                    @foreach (var author in book.Authors)
-                    {
-                        <li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
-                    }
-                </ul></td>
-            <td>@book.PagesCount</td>
-            <td>@book.Publisher</td>
-            <td>@book.ISBN</td>
-            <td>@string.Format("{0:dd.MM.yyyy}", book.PublishDate) </td>
-            <td></td>
-        </tr>
-    }
-</table>
+		<table class="table table-bordered table-hover table-sortable" id="tab_logic">
+			<thead>
+			<tr>
+				<th  class="text-center">название</th>
+				<th  class="text-center">автор(ы)</th>
+				<th  class="text-center">кол-во страниц</th>
+				<th  class="text-center">издательство</th>
+				<th  class="text-center">ISBN</th>
+				<th  class="text-center">год публикации</th>
+				<th  class="text-center"></th>
+			</tr>
+			</thead>
+			<tbody>
+				@foreach (var book in Model)
+			{
+					<tr>
+						<td>@book.Title</td>
+						<td>
+							<ul class="authors">
+								@foreach (var author in book.Authors)
+								{
+									<li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
+								}
+							</ul>
+						</td>
+						<td>@book.PagesCount</td>
+						<td>@book.Publisher</td>
+						<td>@book.ISBN</td>
+						<td>@string.Format("{0:dd.MM.yyyy}", book.PublishDate) </td>
+						<td class="form-horizontal2">
+							<a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+						</td>
+					</tr>
+			}
+			</tbody>
+		</table>
+	

@@ -618,3 +618,8 @@ footer h3 {
 }
 
 .footer-bottom a:hover, .footer-bottom a:focus { color: #888; }
+
+
+.table-sortable thead th {
+    cursor: pointer;
+}
