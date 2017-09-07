@@ -1,0 +1,27 @@
+﻿@model DomainModel.BookViewModel
+
+@{
+	Layout = null;
+}
+
+<h2>title @Model.BookId</h2>
+
+<div class="contact-form">
+	<form role="form" action="#" method="post">
+		<div class="form-group">
+			<label class="sr-only" for="contact-email">Название</label>
+			<input type="text" name="email" placeholder="Название ..." class="contact-email form-control" id="contact-email">
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="contact-subject">Автор</label>
+			<input type="text" name="subject" placeholder="Автор ..." class="contact-subject form-control" id="contact-subject">
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="contact-message">Количество страниц</label>
+			<textarea name="message" placeholder="Количество страниц ..." class="contact-message form-control" id="contact-message"></textarea>
+		</div>
+		<input type="hidden" id="idBookId" />
+		<button type="button" class="btn btn-sm btn-default">Сохранить изменения</button>
+		<button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Закрыть</button>
+	</form>
+</div>

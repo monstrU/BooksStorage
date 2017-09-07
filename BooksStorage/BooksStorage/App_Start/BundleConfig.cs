@@ -6,12 +6,12 @@ namespace BooksStorage
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+            bundles.Add(new ScriptBundle("~/bundles/master").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui-{version}.js",
+                        //"~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js",
-                        "~/Scripts/common.js"));
+                        "~/Scripts/jquery.validate.unobtrusive.js"
+                        ));
 
 
 
@@ -21,8 +21,7 @@ namespace BooksStorage
 
 
 
-
-            BundleTable.EnableOptimizations = true;
+			
         }
     }
 }
