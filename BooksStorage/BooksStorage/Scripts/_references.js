@@ -11,4 +11,5 @@
 /// <reference path="bootstrap.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
-/// <reference path="jquery-2.1.1.js" />
+/// <reference path="jquery-2.2.4.min.js" />
+/// <reference path="utils/bookeditormodule.js" />

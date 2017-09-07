@@ -4,40 +4,75 @@
 
 }
 
-		<table class="table table-bordered table-hover table-sortable" id="tab_logic">
-			<thead>
-			<tr>
-				<th  class="text-center">название</th>
-				<th  class="text-center">автор(ы)</th>
-				<th  class="text-center">кол-во страниц</th>
-				<th  class="text-center">издательство</th>
-				<th  class="text-center">ISBN</th>
-				<th  class="text-center">год публикации</th>
-				<th  class="text-center"></th>
-			</tr>
-			</thead>
-			<tbody>
-				@foreach (var book in Model)
+<table class="table table-bordered table-hover table-sortable" id="idTabStorage">
+	<thead>
+		<tr>
+			<th class="text-center">название</th>
+			<th class="text-center">автор(ы)</th>
+			<th class="text-center">кол-во страниц</th>
+			<th class="text-center">издательство</th>
+			<th class="text-center">ISBN</th>
+			<th class="text-center">год публикации</th>
+			<th class="text-center"></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var book in Model)
 			{
-					<tr>
-						<td>@book.Title</td>
-						<td>
-							<ul class="authors">
-								@foreach (var author in book.Authors)
-								{
-									<li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
-								}
-							</ul>
-						</td>
-						<td>@book.PagesCount</td>
-						<td>@book.Publisher</td>
-						<td>@book.ISBN</td>
-						<td>@string.Format("{0:dd.MM.yyyy}", book.PublishDate) </td>
-						<td class="form-horizontal2">
-							<a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-						</td>
-					</tr>
+			<tr>
+				<td>@book.Title</td>
+				<td>
+					<ul class="authors">
+						@foreach (var author in book.Authors)
+						{
+							<li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
+						}
+					</ul>
+				</td>
+				<td>@book.PagesCount</td>
+				<td>@book.Publisher</td>
+				<td>@book.ISBN</td>
+				<td>@string.Format("{0:dd.MM.yyyy}", book.PublishDate) </td>
+				<td >
+					<a href="#" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil edit-button" data-book-id="@book.BookId"></span></a>
+				</td>
+			</tr>
 			}
-			</tbody>
-		</table>
-	
+	</tbody>
+</table>
+
+
+@section scripts
+{
+	<script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			BookEditorModule.InitEvents();
+		});
+	</script>
+}
+
+@section additinal_html
+{
+	<div id="idAddressBox" class="modal ">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Заголовок модального окна -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title">Заголовок модального окна</h4>
+			</div>
+			<!-- Основное содержимое модального окна -->
+			<div class="modal-body">
+				
+
+			</div>
+			<!-- Футер модального окна -->
+		<!--<div class="modal-footer">
+		</div>
+			-->
+		</div>
+	</div>
+</div>
+}
