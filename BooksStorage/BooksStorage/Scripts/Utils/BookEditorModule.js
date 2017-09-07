@@ -1,28 +1,33 @@
 ﻿var BookEditorModule = (function (module) {
 
-	module.ModalContentUrl = '/BookEditor/Load';
-	module.ModalBodyBlockId = "#idAddressBox .modal-dialog .modal-content .modal-body";
+	module.ModalContentUrl = '/BookEditor/LoadOne';
+	module.ModalDialogId = 'idBookBox';
+	
+
+	var modalSuffix = '.modal-dialog .modal-content .modal-body';
 
 	module.InitEvents = function () {
-		var dialog = $("#idTabStorage tbody tr td .edit-button");
-
+		
+		var dialog = $("#" + module.ModalDialogId);
 		dialog.on('shown.bs.modal', module.InitContent);
-		dialog.on('click', module.ShowModal);
+
+		var editButtons = $("#idTabStorage tbody tr td .edit-button");
+		editButtons.on('click', module.ShowModal);
 
 
 	}
 	module.InitContent = function (event) {
 		var bookId = parseInt($(event.currentTarget).data("bookId"));
 			
-		$("#" + module.ModalBodyBlockId).load(module.ModalContentUrl, function() {
-			$("#idAddressBox").modal('show');
+		$("#" + module.ModalDialogId+ ' .modal-body' ).load(module.ModalContentUrl, function() {
+			$("#" + module.ModalDialogId).modal('show');
 		});
 
 		
 	}
 
 	module.ShowModal = function (event) {
-		$("#idAddressBox").modal('show');
+		$("#" + module.ModalDialogId).modal('show');
 	}
 
 	return module;

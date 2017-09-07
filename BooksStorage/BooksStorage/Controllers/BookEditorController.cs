@@ -9,7 +9,7 @@ namespace BooksStorage.Controllers
 {
     public class BookEditorController : Controller
     {
-		public ActionResult Load()
+		public ActionResult LoadOne()
 		{
 			return View("Load", new BookViewModel());
 		}
