@@ -8,7 +8,6 @@ namespace BooksStorage
         {
             bundles.Add(new ScriptBundle("~/bundles/master").Include(
                         "~/Scripts/jquery-{version}.js",
-                        //"~/Scripts/jquery-ui-{version}.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.validate.unobtrusive.js"
                         ));
@@ -16,8 +15,8 @@ namespace BooksStorage
 
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
-                      "~/Content/site.css",
-                      "~/Content/themes/base/*.css"));
+                      "~/Content/site.css"
+                      ));
 
 
 
