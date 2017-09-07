@@ -9,18 +9,15 @@ namespace BooksStorage
             bundles.Add(new ScriptBundle("~/bundles/master").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js"
+                        "~/Scripts/jquery.validate.unobtrusive.js",
+						"~/Scripts/bootstrap.*"
                         ));
 
 
 
-            bundles.Add(new StyleBundle("~/bundles/styles").Include(
-                      "~/Content/site.css"
-                      ));
+	        bundles.Add(new StyleBundle("~/bundles/styles")
+		        .IncludeDirectory("~/Content", "*.css"));
 
-
-
-			
         }
     }
 }
