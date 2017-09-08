@@ -8,17 +8,30 @@
 <div class="contact-form">
 	<form role="form" action="#" method="post">
 		<div class="form-group">
-			<label class="sr-only" for="contact-email">Название</label>
-			<input type="text" name="email" placeholder="Название ..." class="contact-email form-control" id="contact-email">
+            @Html.LabelFor(m=>m.Title, new {@class = "sr-only" })
+            @Html.TextBoxFor(m=>m.Title, new {@class= "form-control", placeholder= "Название ..." })
 		</div>
 		<div class="form-group">
 			<label class="sr-only" for="contact-subject">Автор</label>
-			<input type="text" name="subject" placeholder="Автор ..." class="contact-subject form-control" id="contact-subject">
+		    <input type="text" name="subject" placeholder="Автор ..." class="contact-subject form-control" id="contact-subject">
+            
 		</div>
-		<div class="form-group">
-			<label class="sr-only" for="contact-message">Количество страниц</label>
-			<textarea name="message" placeholder="Количество страниц ..." class="contact-message form-control" id="contact-message"></textarea>
-		</div>
+	    <div class="form-group">
+	        @Html.LabelFor(m => m.PagesCount, new {@class = "sr-only"})
+	        @Html.TextBoxFor(m => m.PagesCount, new {@class = "form-control", placeholder = "Количество страниц ..."})
+	    </div>
+	    <div class="form-group">
+	        @Html.LabelFor(m => m.Publisher, new {@class = "sr-only"})
+	        @Html.TextBoxFor(m => m.Publisher, new {@class = "form-control", placeholder = "Издательство ..."})
+	    </div>
+	    <div class="form-group">
+	        @Html.LabelFor(m => m.ISBN, new {@class = "sr-only"})
+	        @Html.TextBoxFor(m => m.ISBN, new {@class = "form-control", placeholder = "ISBN"})
+	    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.BookImage, new { @class = "sr-only" })
+            <input type="file" name="subject" placeholder="изображение ..." class="form-control" id="">
+        </div>
 		<input type="hidden" id="idBookId" />
 		
 	</form>

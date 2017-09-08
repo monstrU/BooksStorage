@@ -1,3 +1,10 @@
 ﻿body, html {
 
 }
+.modal-body {
+    max-height: 70ex;
+    overflow-y: auto;
+}
+.contact-form {
+    
+}
