@@ -9,7 +9,16 @@ namespace BooksStorage.Utils.Converters
     {
         public AuthorModel Convert(AuthorViewModel source)
         {
-            throw new NotImplementedException();
+            return new AuthorModel
+            {
+                BookId = source.BookId,
+                Person = new PersonModel()
+                {
+                    PersonId = source.Person.PersonId,
+                    Name = source.Person.Name,
+                    Family = source.Person.Family
+                }
+            };
         }
 
         public AuthorViewModel Convert(AuthorModel source)
@@ -19,9 +28,9 @@ namespace BooksStorage.Utils.Converters
                 BookId= source.BookId,
                 Person = new PersonViewModel()
                 {
-                    PersonId = source.PersonId,
-                    Name = "name" + source.PersonId,
-                    Family = "f"+source.PersonId
+                    PersonId = source.Person.PersonId,
+                    Name = source.Person.Name,
+                    Family = source.Person.Family
                 }
             };
         }

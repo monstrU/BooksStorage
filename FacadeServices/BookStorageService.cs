@@ -90,13 +90,16 @@ namespace FacadeServices
                 var bookAuhtors = authors.Where(a => a.BookId == book.BookId);
                 foreach (var bauthor in bookAuhtors)
                 {
-                    var person = persons.FirstOrDefault(p => p.PersonId == bauthor.PersonId);
+                    var person = persons.FirstOrDefault(p => p.PersonId == bauthor.Person.PersonId);
                     if (person != null)
                     {
                         tempAuthors.Add(new AuthorModel
                         {
                             BookId = book.BookId,
-                            PersonId = person.PersonId
+                            Person = new PersonModel()
+                            {
+                                PersonId = person.PersonId
+                            }
                         });
                     }
 

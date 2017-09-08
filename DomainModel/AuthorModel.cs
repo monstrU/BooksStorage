@@ -9,6 +9,11 @@ namespace DomainModel
     public class AuthorModel
     {
         public int BookId { get; set; }
-        public int PersonId { get; set; }
+        public PersonModel Person { get; set; }
+
+        public AuthorModel()
+        {
+            Person= new PersonModel();
+        }
     }
 }

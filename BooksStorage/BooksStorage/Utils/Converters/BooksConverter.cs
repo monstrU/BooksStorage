@@ -11,7 +11,18 @@ namespace BooksStorage.Utils.Converters
     {
         public BookModel Convert(BookViewModel source)
         {
-            throw new NotImplementedException();
+            var converter = new AuthorConverter();
+            return new BookModel
+            {
+                BookId = source.BookId,
+                Title = source.Title,
+                PublishDate = source.PublishDate,
+                Publisher = source.Publisher,
+                PagesCount = source.PagesCount,
+                ISBN = source.ISBN,
+                BookImage = source.BookImage,
+                Authors = source.Authors.Select(converter.Convert).ToArray()
+            };
         }
 
         public BookViewModel Convert(BookModel source)
