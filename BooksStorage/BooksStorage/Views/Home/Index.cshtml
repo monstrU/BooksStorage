@@ -47,7 +47,6 @@
 	<script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
-			debugger;
 			BookEditorModule.InitEvents();
 		});
 	</script>
@@ -65,13 +64,13 @@
 			</div>
 			<!-- Основное содержимое модального окна -->
 			<div class="modal-body">
-				
-
 			</div>
 			<!-- Футер модального окна -->
-		<!--<div class="modal-footer">
-		</div>
-			-->
+		    <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default">Сохранить изменения</button>
+		        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Закрыть</button>
+		    </div>
+			
 		</div>
 	</div>
 </div>

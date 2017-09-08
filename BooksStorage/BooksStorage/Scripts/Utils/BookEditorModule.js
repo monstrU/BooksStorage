@@ -14,6 +14,7 @@
 		var editButtons = $("#idTabStorage tbody tr td .edit-button");
 		editButtons.on('click', module.ShowModal);
 
+		$("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
 
 	}
 	module.InitContent = function (event) {
@@ -29,6 +30,8 @@
 	module.ShowModal = function (event) {
 		$("#" + module.ModalDialogId).modal('show');
 	}
-
+	module.Save = function (event) {
+	    alert('save');
+	}
 	return module;
 }(BookEditorModule || {}));
