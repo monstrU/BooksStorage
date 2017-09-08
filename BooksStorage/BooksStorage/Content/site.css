@@ -1,5 +1,5 @@
-﻿body, html {
-
+﻿.book-image {
+    width: 100px;
 }
 .modal-body {
     max-height: 70ex;

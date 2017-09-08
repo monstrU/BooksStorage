@@ -15,7 +15,14 @@ namespace DomainModel
         public string Publisher { get; set; }
         public DateTime PublishDate { get; set; }
         public string ISBN { get; set; }
-        public byte[] BookImage { get; set; }
+        public string BookFileName { get; set; }
+        public string DisplayBookFileName { get
+        {
+            return string.Format("{0}/{1}", BooksUrlFolder, BookFileName);
+        } }
+
+        public string BooksUrlFolder { get; set; }
+
         public IList<AuthorViewModel> Authors { get; set; }
 
         public BookViewModel()

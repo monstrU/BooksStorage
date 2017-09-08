@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
 using DomainModel;
 using FacadeServices;
@@ -32,7 +33,7 @@ namespace BooksStorage.Controllers
 		public ActionResult Save(BookViewModel book)
         {
             
-            var converter = new BooksConverter();
+            var converter = new BooksConverter(Constants.BookUrlsFolder);
             var dalBooks = DataService.LoadBooks();
             var books = dalBooks.Select(converter.Convert).ToList();
             return View("Load", book);

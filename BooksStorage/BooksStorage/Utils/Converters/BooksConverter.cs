@@ -9,6 +9,12 @@ namespace BooksStorage.Utils.Converters
 {
     public class BooksConverter: IConverter<BookModel, BookViewModel >
     {
+        private string BooksUrlFolder { get; set; }
+        public BooksConverter(string bookUrlsFolder)
+        {
+            BooksUrlFolder = bookUrlsFolder;
+        }
+
         public BookModel Convert(BookViewModel source)
         {
             var converter = new AuthorConverter();
@@ -20,7 +26,7 @@ namespace BooksStorage.Utils.Converters
                 Publisher = source.Publisher,
                 PagesCount = source.PagesCount,
                 ISBN = source.ISBN,
-                BookImage = source.BookImage,
+                BookFileName = source.BookFileName,
                 Authors = source.Authors.Select(converter.Convert).ToArray()
             };
         }
@@ -36,7 +42,8 @@ namespace BooksStorage.Utils.Converters
                 Publisher = source.Publisher,
                 PagesCount = source.PagesCount,
                 ISBN = source.ISBN,
-                BookImage = source.BookImage,
+                BookFileName = source.BookFileName,
+                BooksUrlFolder = BooksUrlFolder,
                 Authors = source.Authors.Select(converter.Convert).ToArray()
             };
         }

@@ -8,7 +8,8 @@
 	<thead>
 		<tr>
 			<th class="text-center">название</th>
-			<th class="text-center">автор(ы)</th>
+		    <th class="text-center">автор(ы)</th>
+            <th class="text-center">изображение</th>
 			<th class="text-center">кол-во страниц</th>
 			<th class="text-center">издательство</th>
 			<th class="text-center">ISBN</th>
@@ -21,14 +22,15 @@
 			{
 			<tr>
 				<td>@book.Title</td>
-				<td>
-					<ul class="authors">
-						@foreach (var author in book.Authors)
-						{
-							<li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
-						}
-					</ul>
-				</td>
+			    <td>
+			        <ul class="authors">
+			            @foreach (var author in book.Authors)
+			            {
+			                <li>@string.Format("{0} {1}", author.Person.Name, author.Person.Family)</li>
+			            }
+			        </ul>
+			    </td>
+			    <td><img class="book-image" src="@book.DisplayBookFileName"/></td>
 				<td>@book.PagesCount</td>
 				<td>@book.Publisher</td>
 				<td>@book.ISBN</td>

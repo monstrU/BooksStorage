@@ -34,7 +34,7 @@ namespace FacadeServices
 	                                `PagesCount`	INTEGER NOT NULL,
 	                                `Publisher`	TEXT,
 	                                `ISBN`	TEXT,
-	                                `Cover`	BLOB,
+	                                `BookFileName`	TEXT NULL,
 	                                `Title`	TEXT NOT NULL,
 	                                `PublishDate`	TEXT
                                 );
@@ -56,10 +56,10 @@ namespace FacadeServices
             Provider.Execute("insert into books (Title, PublishDate,  PagesCount, Publisher, ISBN) values('Война и мир', '1991-01-02 00:00:00', 1500, 'Эксмо', '2-266-11156')", null, CommandType.Text);
             Provider.Execute("insert into books (Title, PublishDate,  PagesCount, Publisher, ISBN) values('Золотой теленок', '2011-11-22 00:00:00', 234, 'Кантата', '2-266-14456')", null, CommandType.Text);
             //Аркадий Стругацкий, Борис Стругацкий
-            Provider.Execute("insert into books (Title, PublishDate,  PagesCount, Publisher, ISBN) values('Пикник на обочине', '2011-11-22 00:00:00', 201, 'Terra', '978-5-17-057848-1')", null, CommandType.Text);
+            Provider.Execute("insert into books (Title, PublishDate,  PagesCount, Publisher, ISBN, BookFileName) values('Пикник на обочине', '2011-11-22 00:00:00', 201, 'Terra', '978-5-17-057848-1','Arkadij_Strugatskij_Boris_Strugatskij__Piknik_na_obochine.jpeg')", null, CommandType.Text);
 
             //Театральный роман
-            Provider.Execute("insert into books (Title, PublishDate,  PagesCount, Publisher, ISBN) values('Театральный роман', '2011-11-22 00:00:00', 138, 'АСТ', '5-17-015967-6')", null, CommandType.Text);
+            Provider.Execute("insert into books (Title, PublishDate,  PagesCount, Publisher, ISBN, BookFileName) values('Театральный роман', '2011-11-22 00:00:00', 138, 'АСТ', '5-17-015967-6', 'Mihail_Bulgakov__Teatralnyj_roman.jpeg')", null, CommandType.Text);
 
             Provider.Execute("insert into Persons (Name, Family) values('Лев', 'Толстой')", null, CommandType.Text);
             Provider.Execute("insert into Persons (Name, Family) values('Илья', 'Ильф')", null, CommandType.Text);
@@ -78,7 +78,7 @@ namespace FacadeServices
         }
         public IEnumerable<BookModel> LoadBooks()
         {
-            var gbooks = Provider.Query<BookModel>(@"select BookId, Title, PublishDate,  PagesCount, Publisher, ISBN from Books order by Title"
+            var gbooks = Provider.Query<BookModel>(@"select BookId, Title, PublishDate,  PagesCount, Publisher, ISBN, BookFileName from Books order by Title"
                 , CommandType.Text).ToList();
             var authors = Provider.Query<AuthorModel>(string.Format(@"select PersonId, BookId from Authors"), CommandType.Text).ToList();
             var persons = Provider.Query<PersonModel>(string.Format(@"select PersonId, Name, Family from Persons"), CommandType.Text).ToList();

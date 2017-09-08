@@ -14,7 +14,7 @@ namespace DomainModel
         public string Publisher { get; set; }
         public DateTime PublishDate { get; set; }
         public string ISBN { get; set; }
-        public byte[] BookImage { get; set; }
+        public string BookFileName { get; set; }
         public IList<AuthorModel> Authors { get; set; }
 
         public BookModel()
