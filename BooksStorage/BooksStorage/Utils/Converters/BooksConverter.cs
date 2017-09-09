@@ -17,7 +17,7 @@ namespace BooksStorage.Utils.Converters
 
         public BookModel Convert(BookViewModel source)
         {
-            var converter = new AuthorConverter();
+            var converter = new PersonConverter();
             return new BookModel
             {
                 BookId = source.BookId,
@@ -33,7 +33,7 @@ namespace BooksStorage.Utils.Converters
 
         public BookViewModel Convert(BookModel source)
         {
-            var converter = new AuthorConverter();
+            var converter = new PersonConverter();
             return new BookViewModel
             {
                 BookId = source.BookId,

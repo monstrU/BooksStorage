@@ -66,7 +66,7 @@ namespace FacadeServices
             Provider.Execute("insert into Persons (Name, Family) values('Евгений', 'Петров')", null, CommandType.Text);
             Provider.Execute("insert into Persons (Name, Family) values('Аркадий', 'Стругацкий')", null, CommandType.Text);
             Provider.Execute("insert into Persons (Name, Family) values('Борис', 'Стругацкий')", null, CommandType.Text);
-            Provider.Execute("insert into Persons (Name, Family) values('Мишаил', 'Булгаков')", null, CommandType.Text);
+            Provider.Execute("insert into Persons (Name, Family) values('Михаил', 'Булгаков')", null, CommandType.Text);
 
             Provider.Execute("insert into Authors(PersonId, BookId) values(1,1)", null, CommandType.Text);
             Provider.Execute("insert into Authors(PersonId, BookId) values(2,2)", null, CommandType.Text);
@@ -78,11 +78,31 @@ namespace FacadeServices
         }
         public IEnumerable<BookModel> LoadBooks()
         {
-            var gbooks = Provider.Query<BookModel>(@"select BookId, Title, PublishDate,  PagesCount, Publisher, ISBN, BookFileName from Books order by Title"
-                , CommandType.Text).ToList();
+            var gbooks = Provider.QueryMultiple<BookModel, PersonModel>(@"select 	Books.BookId, 
+		                    Books.Title, 
+		                    Books.PublishDate,  
+		                    Books.PagesCount, 
+		                    Books.Publisher, 
+		                    Books.ISBN, 
+		                    Books.BookFileName,
+		                    Persons.PersonId,
+		                    Persons.Name,
+		                    Persons.Family
+	                    from Books 
+		                    inner join Authors on Authors.BookId=Books.BookId
+		                    inner join Persons on Persons.PersonId=Authors.PersonId
+	                    order by Books.Title",
+                            (book, person) =>
+                            {
+                                book.Authors.Add(person);
+                                return book;
+                            }, 
+                            "PersonId",
+                            CommandType.Text
+                        ).ToList();
             var authors = Provider.Query<AuthorModel>(string.Format(@"select PersonId, BookId from Authors"), CommandType.Text).ToList();
             var persons = Provider.Query<PersonModel>(string.Format(@"select PersonId, Name, Family from Persons"), CommandType.Text).ToList();
-
+            /*
             foreach (var book in gbooks)
             {
                 var tempAuthors = new List<AuthorModel>();
@@ -107,7 +127,8 @@ namespace FacadeServices
                 }
 
                 book.Authors = tempAuthors;
-            }
+                
+            }*/
             return gbooks;
         }
 

@@ -23,11 +23,11 @@ namespace DomainModel
 
         public string BooksUrlFolder { get; set; }
 
-        public IList<AuthorViewModel> Authors { get; set; }
+        public IList<PersonViewModel> Authors { get; set; }
 
         public BookViewModel()
         {
-            Authors = new AuthorViewModel[0];
+            Authors = new List<PersonViewModel>();
         }
     }
 }

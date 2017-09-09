@@ -153,6 +153,7 @@
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Converters\AuthorConverter.cs" />
     <Compile Include="Utils\Converters\BooksConverter.cs" />
+    <Compile Include="Utils\Converters\PersonConverter.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />

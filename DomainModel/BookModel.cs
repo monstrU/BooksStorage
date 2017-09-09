@@ -15,11 +15,11 @@ namespace DomainModel
         public DateTime PublishDate { get; set; }
         public string ISBN { get; set; }
         public string BookFileName { get; set; }
-        public IList<AuthorModel> Authors { get; set; }
+        public IList<PersonModel> Authors { get; set; }
 
         public BookModel()
         {
-            Authors= new AuthorModel[0];
+            Authors = new List<PersonModel>();
         }
     }
 }
