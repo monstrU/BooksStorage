@@ -9,14 +9,15 @@ using DomainModel;
 using FacadeServices;
 using FacadeServices.Factories;
 using FacadeServices.Interfaces;
+using FacadeServices.Interfaces.DataBases;
+using FacadeServices.Interfaces.Services;
 
 namespace BooksStorage.Controllers
 {
     public class BookEditorController : ControllerBase
     {
-        public BookEditorController()
+        public BookEditorController(IBooksService booksService): base(booksService)
         {
-            
         }
 
         public ActionResult Load(Nullable<int> bookId)

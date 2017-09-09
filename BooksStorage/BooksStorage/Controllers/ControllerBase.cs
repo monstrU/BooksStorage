@@ -11,12 +11,13 @@ namespace BooksStorage.Controllers
     {
         public IBooksService BooksService { get; set; }
 
-        public ControllerBase()
+        public ControllerBase(IBooksService booksService)
         {
             var dbFactory = new SqLiteConnectionFactory();
             var bookStorage = new BookStrogeDb(dbFactory);
             var memoryStrorage= new MemoryStorage();
-            BooksService= new BookService(bookStorage, memoryStrorage);
+            //BooksService= new BookService(memoryStrorage);
+            BooksService = booksService;
         }
     }
 }

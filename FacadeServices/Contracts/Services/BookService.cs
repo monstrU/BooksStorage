@@ -7,7 +7,7 @@ namespace FacadeServices.Contracts.Services
 {
     public class BookService: ServiceBase, IBooksService
     {
-        public BookService(IBookStorageDb bookStorageDb, IMemoryStorage memoryStorage) : base(bookStorageDb, memoryStorage)
+        public BookService(IMemoryStorage memoryStorage) : base(memoryStorage)
         {
         }
 

@@ -5,12 +5,14 @@ using BooksStorage.Utils.Converters;
 using FacadeServices;
 using FacadeServices.Factories;
 using FacadeServices.Interfaces;
+using FacadeServices.Interfaces.DataBases;
+using FacadeServices.Interfaces.Services;
 
 namespace BooksStorage.Controllers
 {
     public class HomeController : ControllerBase
     {
-        public HomeController()
+        public HomeController(IBooksService booksService): base(booksService)
         {
         }
         public ActionResult Index()
