@@ -11,7 +11,7 @@ namespace FacadeServices.Contracts.Mappers
 {
     public abstract class MapperBase: IMapper
     {
-        private IConnectionFactory ConnectionFactory { get; set; }
+        private IConnectionFactory ConnectionFactory { get; }
         public IDbConnection CreateConnection()
         {
             return ConnectionFactory.CreateConnection();

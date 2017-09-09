@@ -10,5 +10,6 @@ namespace FacadeServices.Interfaces.DataBases
     public interface IBooksMapper
     {
         IList<BookModel> LoadBooks();
+        BookModel LoadBook(int bookId);
     }
 }

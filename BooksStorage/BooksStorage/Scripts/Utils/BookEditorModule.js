@@ -1,6 +1,6 @@
 ﻿var BookEditorModule = (function (module) {
 
-	module.ModalContentUrl = '/BookEditor/LoadOne';
+	module.ModalContentUrl = '/BookEditor/Load';
 	module.ModalDialogId = 'idBookBox';
 	
 
@@ -18,9 +18,12 @@
 
 	}
 	module.InitContent = function (event) {
-		var bookId = parseInt($(event.currentTarget).data("bookId"));
-			
-		$("#" + module.ModalDialogId+ ' .modal-body' ).load(module.ModalContentUrl, function() {
+	    var bookId = parseInt($(event.target).data('bookId'));
+
+	    var url = module.ModalContentUrl;
+	    if (!isNaN(bookId))
+	        url+='?bookId='+bookId;
+		$("#" + module.ModalDialogId+ ' .modal-body' ).load(url, function() {
 			$("#" + module.ModalDialogId).modal('show');
 		});
 
@@ -28,7 +31,11 @@
 	}
 
 	module.ShowModal = function (event) {
-		$("#" + module.ModalDialogId).modal('show');
+	    
+	    var dialog = $("#" + module.ModalDialogId);
+	    var bookId = parseInt($(event.currentTarget).data("bookId"));
+	    dialog.data("bookId", bookId);
+	    dialog.modal('show');
 	}
 	module.Save = function (event) {
 	    alert('save');

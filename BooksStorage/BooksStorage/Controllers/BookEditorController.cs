@@ -12,21 +12,32 @@ using FacadeServices.Interfaces;
 
 namespace BooksStorage.Controllers
 {
-    public class BookEditorController : Controller
+    public class BookEditorController : ControllerBase
     {
-        public IBookStorageService DataService { get; set; }
-        public IDataProvider DataProvider { get; set; }
-
         public BookEditorController()
         {
-            var dbFactory = new SqLiteConnectionFactory();
-            DataProvider = new DataProvider(dbFactory);
-            DataService = new BookStorageService(DataProvider);
+            
         }
 
-        public ActionResult LoadOne()
-		{
-			return View("Load", new BookViewModel());
+        public ActionResult Load(Nullable<int> bookId)
+        {
+            BookViewModel book;
+            if (!bookId.HasValue)
+            {
+                book = new BookViewModel();
+            }
+            else
+            {
+                /*var dbFactory = new SqLiteConnectionFactory();
+                var DataProvider = new DataProvider(dbFactory);
+                var DataService = new BookStorageService(DataProvider);
+                DataService.InitSqDb();*/
+
+                var bookDb = BooksService.LoadBook(bookId.GetValueOrDefault());
+                var converter= new BooksConverter(Constants.BookUrlsFolder);
+                book = converter.Convert(bookDb);
+            }
+            return View("Load", book);
 		}
 
 		// GET: BookEditor
@@ -34,8 +45,8 @@ namespace BooksStorage.Controllers
         {
             
             var converter = new BooksConverter(Constants.BookUrlsFolder);
-            var dalBooks = DataService.LoadBooks();
-            var books = dalBooks.Select(converter.Convert).ToList();
+            //var dalBooks = DataService.LoadBooks();
+            //var books = dalBooks.Select(converter.Convert).ToList();
             return View("Load", book);
         }
     }

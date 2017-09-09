@@ -15,5 +15,10 @@ namespace FacadeServices.Contracts.Services
         {
             return BookStorageDb.BooksMapper.LoadBooks();
         }
+
+        public BookModel LoadBook(int bookId)
+        {
+            return BookStorageDb.BooksMapper.LoadBook(bookId);
+        }
     }
 }

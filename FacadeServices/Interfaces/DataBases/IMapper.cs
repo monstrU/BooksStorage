@@ -9,6 +9,6 @@ namespace FacadeServices.Interfaces.DataBases
 {
     public interface IMapper
     {
-        IDbConnection CreateConnection();
+        IDbConnection CreateConnection() ;
     }
 }
