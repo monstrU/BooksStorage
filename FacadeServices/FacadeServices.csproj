@@ -52,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\DataBases\BookStrogeDb.cs" />
+    <Compile Include="Contracts\DataBases\MemoryStorage.cs" />
     <Compile Include="Contracts\Mappers\BooksMapper.cs" />
     <Compile Include="Contracts\Mappers\MapperBase.cs" />
     <Compile Include="Contracts\Services\BookService.cs" />
+    <Compile Include="Interfaces\DataBases\IMemoryStorage.cs" />
     <Compile Include="Interfaces\Services\IBooksService.cs" />
     <Compile Include="Contracts\Services\ServiceBase.cs" />
     <Compile Include="DataProvider.cs" />

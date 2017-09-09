@@ -15,7 +15,8 @@ namespace BooksStorage.Controllers
         {
             var dbFactory = new SqLiteConnectionFactory();
             var bookStorage = new BookStrogeDb(dbFactory);
-            BooksService= new BookService(bookStorage);
+            var memoryStrorage= new MemoryStorage();
+            BooksService= new BookService(bookStorage, memoryStrorage);
         }
     }
 }

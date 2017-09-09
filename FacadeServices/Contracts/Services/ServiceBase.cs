@@ -6,9 +6,11 @@ namespace FacadeServices.Contracts.Services
     {
         protected IBookStorageDb BookStorageDb { get; }
 
-        protected ServiceBase(IBookStorageDb bookStorageDb)
+        public IMemoryStorage MemoryStorage { get; set; }
+        protected ServiceBase(IBookStorageDb bookStorageDb, IMemoryStorage memoryStorage)
         {
             BookStorageDb = bookStorageDb;
+            MemoryStorage = memoryStorage;
         }
 
         

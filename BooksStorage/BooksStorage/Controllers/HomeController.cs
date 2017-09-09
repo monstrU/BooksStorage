@@ -15,7 +15,7 @@ namespace BooksStorage.Controllers
         }
         public ActionResult Index()
         {
-            var bookDb = BooksService.LoadBook(2);
+            //var bookDb = BooksService.LoadBook(2);
 
             var dalBooks = BooksService.LoadBooks();
 

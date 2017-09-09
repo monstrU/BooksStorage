@@ -7,18 +7,18 @@ namespace FacadeServices.Contracts.Services
 {
     public class BookService: ServiceBase, IBooksService
     {
-        public BookService(IBookStorageDb bookStorageDb) : base(bookStorageDb)
+        public BookService(IBookStorageDb bookStorageDb, IMemoryStorage memoryStorage) : base(bookStorageDb, memoryStorage)
         {
         }
 
         public IList<BookModel> LoadBooks()
         {
-            return BookStorageDb.BooksMapper.LoadBooks();
+            return MemoryStorage.LoadBooks();
         }
 
         public BookModel LoadBook(int bookId)
         {
-            return BookStorageDb.BooksMapper.LoadBook(bookId);
+            return MemoryStorage.LoadBook(bookId);
         }
     }
 }

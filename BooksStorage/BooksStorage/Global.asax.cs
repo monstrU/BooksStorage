@@ -19,10 +19,10 @@ namespace BooksStorage
 
         private static void InitDataBase()
         {
-            var dbFactory = new SqLiteConnectionFactory();
-            var DataProvider = new DataProvider(dbFactory);
-            var DataService = new BookStorageService(DataProvider);
-            DataService.InitSqDb();
+            //var dbFactory = new SqLiteConnectionFactory();
+            //var DataProvider = new DataProvider(dbFactory);
+            //var DataService = new BookStorageService(DataProvider);
+            //DataService.InitSqDb();
 
         }
     }
