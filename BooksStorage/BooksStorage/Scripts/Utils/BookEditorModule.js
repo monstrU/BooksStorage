@@ -2,6 +2,7 @@
 
 	module.ModalContentUrl = '/BookEditor/Load';
 	module.ModalDialogId = 'idBookBox';
+	module.BookManagerUrl = '/api/BooksStorageManager';
 	
 
 	var modalSuffix = '.modal-dialog .modal-content .modal-body';
@@ -38,7 +39,28 @@
 	    dialog.modal('show');
 	}
 	module.Save = function (event) {
-	    alert('save');
+	    var urlSave = module.BookManagerUrl + '/SaveBook';
+	    $('#'+module.ModalDialogId + " form").submit();
+	    /* $.ajax({
+	        method: 'POST',
+	        url: SaveBook,
+	        cache: false,
+	        data: { cityId: cityIdValue },
+	        dataType: 'json',
+	        traditional: true
+	    })
+.success(function (data) {
+    var res = [];
+    if (typeof (data) == 'object') {
+
+    }
+    
+})
+.fail(function () {
+    alert('Ошибка при загрузки книги. ');
+});
+    */
+
 	}
 	return module;
 }(BookEditorModule || {}));

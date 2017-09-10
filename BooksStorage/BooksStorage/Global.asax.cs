@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using FacadeServices;
 using FacadeServices.Contracts.DataBases;
 using FacadeServices.Contracts.Services;
@@ -18,8 +20,11 @@ namespace BooksStorage
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            
+            
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             InitDataBase();
             DependencyResolverInit();
@@ -35,18 +40,26 @@ namespace BooksStorage
 
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
             builder.RegisterFilterProvider();
-
-
-                        
+            
             var container = builder.Build();
 
             // Create the depenedency resolver.
             var resolver = new AutofacDependencyResolver(container);
 
+            
             // Configure MVC controler with the dependency resolver.
             DependencyResolver.SetResolver(resolver);
 
+            // Configure Web API with the dependency resolver.
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+
+
+            // Configure Web API with the dependency resolver.
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
 
         }

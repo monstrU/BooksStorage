@@ -7,5 +7,6 @@ namespace FacadeServices.Interfaces.Services
     {
         IList<BookModel> LoadBooks();
         BookModel LoadBook(int bookId);
+        void UpdateBook(BookModel book);
     }
 }

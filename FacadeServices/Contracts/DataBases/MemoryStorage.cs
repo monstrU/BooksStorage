@@ -8,7 +8,7 @@ namespace FacadeServices.Contracts.DataBases
 {
     public class MemoryStorage :IMemoryStorage
     {
-        public IList<BookModel> Books { get; set; }
+        public List<BookModel> Books { get; set; }
         public IList<PersonModel> Authors { get; set; }
         public MemoryStorage()
         {
@@ -120,6 +120,16 @@ namespace FacadeServices.Contracts.DataBases
         public BookModel LoadBook(int bookId)
         {
             return Books.FirstOrDefault(b => b.BookId == bookId);
+        }
+        
+        public void UpdateBook(BookModel oldBook, BookModel newBook)
+        {
+            var bookIndex = Books.FindIndex(i => i.BookId == oldBook.BookId);
+            if (bookIndex >= 0)
+            {
+                Books.RemoveAt(bookIndex);
+                Books.Add(newBook);
+            }
         }
     }
 }

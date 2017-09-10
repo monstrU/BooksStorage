@@ -9,6 +9,7 @@
 /// <reference path="../assets/js/waypoints.js" />
 /// <reference path="../assets/js/wow.js" />
 /// <reference path="bootstrap.min.js" />
+/// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
 /// <reference path="jquery-2.2.4.min.js" />

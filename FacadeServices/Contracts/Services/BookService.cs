@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DomainModel;
 using FacadeServices.Interfaces.DataBases;
 using FacadeServices.Interfaces.Services;
@@ -19,6 +20,19 @@ namespace FacadeServices.Contracts.Services
         public BookModel LoadBook(int bookId)
         {
             return MemoryStorage.LoadBook(bookId);
+        }
+
+        public void UpdateBook(BookModel book)
+        {
+            var find = MemoryStorage.LoadBook(book.BookId);
+            if (find != null)
+            {
+                MemoryStorage.UpdateBook(find, book);
+            }
+            else
+            {
+                throw new Exception($"Не удалось найти книгу {book.Title} в хранилище.");
+            }
         }
     }
 }

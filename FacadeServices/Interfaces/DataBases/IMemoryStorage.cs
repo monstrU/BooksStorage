@@ -10,5 +10,6 @@ namespace FacadeServices.Interfaces.DataBases
         void Add(PersonModel person);
         IList<BookModel> LoadBooks();
         BookModel LoadBook(int bookId);
+        void UpdateBook(BookModel oldBook, BookModel newBook);
     }
 }
