@@ -15,7 +15,8 @@ namespace DomainModel
         [Required(ErrorMessage = "Введите название")]
         [DisplayName("Название")]
         public string  Title { get; set; }
-        [DisplayName("Число страниц")]
+        [DisplayName("Количество страниц")]
+        [Required(ErrorMessage = "Введите количество страниц")]
         public int PagesCount { get; set; }
         [DisplayName("Издательство")]
         public string Publisher { get; set; }

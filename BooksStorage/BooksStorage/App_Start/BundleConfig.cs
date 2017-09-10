@@ -9,8 +9,7 @@ namespace BooksStorage
             bundles.Add(new ScriptBundle("~/bundles/master").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.*",
-                        "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js",
+                        "~/Scripts/jquery.validate*",
                         "~/Scripts/jquery.unobtrusive*"
                         )
 						.IncludeDirectory("~/Scripts/Utils", "*.js"));

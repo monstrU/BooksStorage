@@ -4,16 +4,13 @@
     Layout = null;
 }
 
-
+<!--$.validator.unobtrusive.parse($("#idPaintedObjectForm"));-->
 <div class="contact-form">
 
-    @using (Ajax.BeginForm("SaveBook", "Home",
-                                    null, new AjaxOptions
-                                    {
-                                        HttpMethod = "POST",
-                                        OnComplete = "alert('OnComplete');"
-                                    },
-                                    new { role = "form" }))
+    @using (Html.BeginForm("SaveBook", "Home",
+                    null,
+                    FormMethod.Post,
+                    new { role = "form" }))
     {
         <div class="form-group">
             [1]
@@ -33,6 +30,8 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.PagesCount, new {@class = ""})
                 @Html.TextBoxFor(m => m.PagesCount, new {@class = "form-control", placeholder = "Количество страниц ..."})
+                @Html.ValidationMessageFor(m => m.PagesCount)
+                @Html.ValidationMessage("PagesCount")
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Publisher, new {@class = ""})
