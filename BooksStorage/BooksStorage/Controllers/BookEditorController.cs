@@ -38,8 +38,9 @@ namespace BooksStorage.Controllers
                 var converter= new BooksConverter(Constants.BookUrlsFolder);
                 book = converter.Convert(bookDb);
             }
-            return View("Load", book);
-		}
+            //return View("Load", book);
+            return RedirectToAction("Load", "Home",new {bookId});
+        }
 
 		// GET: BookEditor
 		public ActionResult Save(BookViewModel book)

@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
+using DomainModel;
 using FacadeServices;
 using FacadeServices.Factories;
 using FacadeServices.Interfaces;
@@ -17,8 +19,6 @@ namespace BooksStorage.Controllers
         }
         public ActionResult Index()
         {
-            //var bookDb = BooksService.LoadBook(2);
-
             var dalBooks = BooksService.LoadBooks();
 
             var converter = new BooksConverter(Constants.BookUrlsFolder);
@@ -26,5 +26,20 @@ namespace BooksStorage.Controllers
             var books = dalBooks.Select(converter.Convert).ToList();
             return View("Index", books);
         }
+
+        public ActionResult Load(Nullable<int> bookId)
+        {
+            var bookDb = BooksService.LoadBook(bookId.GetValueOrDefault());
+            var converter = new BooksConverter(Constants.BookUrlsFolder);
+            var book = converter.Convert(bookDb);
+            return View("Load", book);
+        }
+
+        [HttpPost]
+        public ActionResult SaveBook(BookViewModel book)
+        {
+            return View("Load", book);
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿var BookEditorModule = (function (module) {
 
-	module.ModalContentUrl = '/BookEditor/Load';
+    //module.ModalContentUrl = '/BookEditor/Load';
+    module.ModalContentUrl = '/Home/Load';
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
 	
