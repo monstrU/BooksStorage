@@ -15,9 +15,6 @@
                                     new { role = "form" }))
     {
         <div class="form-group">
-            [1]
-            @Html.ValidationSummary(false);
-            [2]
         </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Title, new {@class = ""})
@@ -32,6 +29,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.PagesCount, new {@class = ""})
                 @Html.TextBoxFor(m => m.PagesCount, new {@class = "form-control", placeholder = "Количество страниц ..."})
+                @Html.ValidationMessageFor(m => m.PagesCount)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Publisher, new {@class = ""})
@@ -46,6 +44,6 @@
                 <input type="file" name="subject" placeholder="изображение ..." class="form-control" id="">
             </div>
             @Html.HiddenFor(m => m.BookId)
-            <input type="submit" value="test"/>
+            
             }
         </div>

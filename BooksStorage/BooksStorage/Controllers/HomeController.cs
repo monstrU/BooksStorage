@@ -26,20 +26,6 @@ namespace BooksStorage.Controllers
             var books = dalBooks.Select(converter.Convert).ToList();
             return View("Index", books);
         }
-
-        public ActionResult Load(Nullable<int> bookId)
-        {
-            var bookDb = BooksService.LoadBook(bookId.GetValueOrDefault());
-            var converter = new BooksConverter(Constants.BookUrlsFolder);
-            var book = converter.Convert(bookDb);
-            return View("Load", book);
-        }
-
-        [HttpPost]
-        public ActionResult SaveBook(BookViewModel book)
-        {
-            return View("Load", book);
-        }
-
+        
     }
 }

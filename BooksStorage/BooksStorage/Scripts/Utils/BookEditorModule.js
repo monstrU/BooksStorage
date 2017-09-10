@@ -1,7 +1,6 @@
 ﻿var BookEditorModule = (function (module) {
 
-    //module.ModalContentUrl = '/BookEditor/Load';
-    module.ModalContentUrl = '/Home/Load';
+    module.ModalContentUrl = '/BookEditor/Load';
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
 	
@@ -25,7 +24,8 @@
 	    var url = module.ModalContentUrl;
 	    if (!isNaN(bookId))
 	        url+='?bookId='+bookId;
-		$("#" + module.ModalDialogId+ ' .modal-body' ).load(url, function() {
+	    $("#" + module.ModalDialogId + ' .modal-body').load(url, function () {
+	        $.validator.unobtrusive.parse($("#" + module.ModalDialogId+" form"));
 			$("#" + module.ModalDialogId).modal('show');
 		});
 
