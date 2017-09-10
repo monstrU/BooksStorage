@@ -10,6 +10,7 @@ namespace BooksStorage
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.validate.unobtrusive.js",
+                        "~/Scripts/jquery.unobtrusive*",
 						"~/Scripts/bootstrap.*"
                         )
 						.IncludeDirectory("~/Scripts/Utils", "*.js"));

@@ -35,6 +35,7 @@ namespace BooksStorage.Controllers
         public IHttpActionResult SaveBook(BookViewModel book)
         {
             var result = new OperationResult();
+            var state = ModelState;
             try
             {
                 var converter= new BooksConverter(Constants.BookUrlsFolder);

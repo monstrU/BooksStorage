@@ -12,6 +12,7 @@ namespace DomainModel
     public class BookViewModel
     {
         public int BookId { get; set; }
+        [Required(ErrorMessage = "Введите название")]
         [DisplayName("Название")]
         public string  Title { get; set; }
         [DisplayName("Число страниц")]

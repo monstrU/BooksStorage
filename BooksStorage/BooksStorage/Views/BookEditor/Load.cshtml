@@ -8,38 +8,44 @@
 <div class="contact-form">
 
     @using (Ajax.BeginForm("SaveBook", "api/BooksStorageManager",
-                            null, new AjaxOptions
-                            {
-                                HttpMethod = "POST"
-                            },
-                            new { role = "form" }))
+                                    null, new AjaxOptions
+                                    {
+                                        HttpMethod = "POST"
+                                    },
+                                    new { role = "form" }))
     {
         <div class="form-group">
-            @Html.LabelFor(m => m.Title, new { @class = "" })
-            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Название ..." })
+            [1]
+            @Html.ValidationSummary(false);
+            [2]
         </div>
-        <div class="form-group">
-            <label class="" for="contact-subject">Автор</label>
-            <input type="text" name="subject" placeholder="Автор ..." class="contact-subject form-control" id="contact-subject">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Title, new {@class = ""})
+                @Html.TextBoxFor(m => m.Title, new {@class = "form-control", placeholder = "Название ..."})
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+            <div class="form-group">
+                <label class="" for="contact-subject">Автор</label>
+                <input type="text" name="subject" placeholder="Автор ..." class="contact-subject form-control" id="contact-subject">
 
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PagesCount, new {@class = ""})
+                @Html.TextBoxFor(m => m.PagesCount, new {@class = "form-control", placeholder = "Количество страниц ..."})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Publisher, new {@class = ""})
+                @Html.TextBoxFor(m => m.Publisher, new {@class = "form-control", placeholder = "Издательство ..."})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ISBN, new {@class = ""})
+                @Html.TextBoxFor(m => m.ISBN, new {@class = "form-control", placeholder = "ISBN"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BookFileName, new {@class = ""})
+                <input type="file" name="subject" placeholder="изображение ..." class="form-control" id="">
+            </div>
+            @Html.HiddenFor(m => m.BookId)
+            <input type="submit" value="test"/>
+            }
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.PagesCount, new { @class = "" })
-            @Html.TextBoxFor(m => m.PagesCount, new { @class = "form-control", placeholder = "Количество страниц ..." })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Publisher, new { @class = "" })
-            @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", placeholder = "Издательство ..." })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ISBN, new { @class = "" })
-            @Html.TextBoxFor(m => m.ISBN, new { @class = "form-control", placeholder = "ISBN" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.BookFileName, new { @class = "" })
-            <input type="file" name="subject" placeholder="изображение ..." class="form-control" id="">
-        </div>
-        @Html.HiddenFor(m=>m.BookId)
-
-    }
-</div>
