@@ -4,8 +4,9 @@
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
 	
-
-	var modalSuffix = '.modal-dialog .modal-content .modal-body';
+    var formatErrorMessage = function(info, errorMessages) {
+        return info + '\n' + errorMessages.join('\n');
+    }
 
 	module.InitEvents = function () {
 		
@@ -39,10 +40,10 @@
 	    dialog.data("bookId", bookId);
 	    dialog.modal('show');
 	}
-	module.Save = function (event) {
-	    var urlSave = module.BookManagerUrl + '/SaveBook';
-	    $('#'+module.ModalDialogId + " form").submit();
-	    /* $.ajax({
+	module.Save = function(event) {
+        var urlSave = module.BookManagerUrl + '/SaveBook';
+        $('#' + module.ModalDialogId + " form").submit();
+        /* $.ajax({
 	        method: 'POST',
 	        url: SaveBook,
 	        cache: false,
@@ -61,7 +62,24 @@
     alert('Ошибка при загрузки книги. ');
 });
     */
-
-	}
+    }
+    module.SuccessSave=  function(data) {
+        if (typeof (data) == 'object') {
+            if (data.IsSuccess) {
+                var dialog = $("#" + module.ModalDialogId);
+                
+                dialog.data("bookId", '');
+                dialog.modal('hide');
+            } else {
+                alert(formatErrorMessage("Ошибка при обновлении книги !", data.ErrorMessages));
+            }
+        }
+    }
+        module.FailSave = function(data) {
+            if (typeof (data) == 'object') {
+                alert(formatErrorMessage("Ошибка при обновлении книги !", data.responseJSON.ErrorMessages));
+            }
+        }
+	
 	return module;
 }(BookEditorModule || {}));

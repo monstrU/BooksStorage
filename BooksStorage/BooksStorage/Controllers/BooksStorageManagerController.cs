@@ -34,20 +34,38 @@ namespace BooksStorage.Controllers
         [HttpPost]
         public IHttpActionResult SaveBook(BookViewModel book)
         {
+
             var result = new OperationResult();
-            var state = ModelState;
-            try
+            if (!ModelState.IsValid)
             {
-                var converter= new BooksConverter(Constants.BookUrlsFolder);
-                var bookDb = converter.Convert(book);
-                BooksService.UpdateBook(bookDb);
-                result.IsSuccess = true;
+                foreach (var state in ModelState)
+                {
+                    if (state.Value.Errors.Any())
+                    {
+                        foreach (var error in state.Value.Errors)
+                        {
+                            result.ErrorMessages.Add(error.ErrorMessage);
+                        }
+                        result.IsSuccess = false;
+                    }
+                }
             }
-            catch (Exception ex)
+            else
             {
-                result.IsSuccess = false;
-                result.ErrorMessages.Add(ex.Message);
+                try
+                {
+                    var converter = new BooksConverter(Constants.BookUrlsFolder);
+                    var bookDb = converter.Convert(book);
+                    BooksService.UpdateBook(bookDb);
+                    result.IsSuccess = true;
+                }
+                catch (Exception ex)
+                {
+                    result.IsSuccess = false;
+                    result.ErrorMessages.Add(ex.Message);
+                }
             }
+          
             //NegotiatedContentResult<OperationResult> r = new NegotiatedContentResult<OperationResult>(HttpStatusCode.BadRequest, result, this);
             IHttpActionResult httpResult;
             if (result.IsSuccess)

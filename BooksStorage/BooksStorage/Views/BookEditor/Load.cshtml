@@ -10,7 +10,9 @@
     @using (Ajax.BeginForm("SaveBook", "api/BooksStorageManager",
                                     null, new AjaxOptions
                                     {
-                                        HttpMethod = "POST"
+                                        HttpMethod = "POST",
+                                        OnSuccess = "BookEditorModule.SuccessSave",
+                                        OnFailure = "BookEditorModule.FailSave"
                                     },
                                     new { role = "form" }))
     {
