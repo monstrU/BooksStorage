@@ -13,14 +13,17 @@ namespace DomainModel
     {
         public int BookId { get; set; }
         [Required(ErrorMessage = "Введите название")]
+        [StringLength(30, ErrorMessage = "Длина названия не должна превышать 30 символов.")]
         [DisplayName("Название")]
         public string  Title { get; set; }
         [DisplayName("Количество страниц")]
         [Required(ErrorMessage = "Введите количество страниц")]
+        [Range(1,10000,ErrorMessage =  "Количество страниц не должно превышать 10 000")]
         public int PagesCount { get; set; }
         [DisplayName("Издательство")]
+        [StringLength(30, ErrorMessage = "Длина названия издательства не должна превышать 30 символов.")]
         public string Publisher { get; set; }
-        [DisplayName("дата публикации")]
+        [DisplayName("Дата публикации")]
         public DateTime PublishDate { get; set; }
         [DisplayName("ISBN")]
         public string ISBN { get; set; }
