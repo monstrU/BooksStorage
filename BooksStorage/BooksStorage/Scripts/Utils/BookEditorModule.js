@@ -3,7 +3,7 @@
     module.ModalContentUrl = '/BookEditor/Load';
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
-	
+    module.BookItemIdPrefix = '';
     var formatErrorMessage = function(info, errorMessages) {
         return info + '\n' + errorMessages.join('\n');
     }
@@ -43,24 +43,7 @@
 	module.Save = function(event) {
         var urlSave = module.BookManagerUrl + '/SaveBook';
         $('#' + module.ModalDialogId + " form").submit();
-        /* $.ajax({
-	        method: 'POST',
-	        url: SaveBook,
-	        cache: false,
-	        data: { cityId: cityIdValue },
-	        dataType: 'json',
-	        traditional: true
-	    })
-.success(function (data) {
-    var res = [];
-    if (typeof (data) == 'object') {
-
-    }
-    
-})
-.fail(function () {
-    alert('Ошибка при загрузки книги. ');
-});
+        /* 
     */
     }
     module.SuccessSave=  function(data) {
@@ -70,6 +53,31 @@
                 
                 dialog.data("bookId", '');
                 dialog.modal('hide');
+
+                var bookId = parseInt(data.DataResult.BookId);
+                var url = '/home/bookitem?bookid=' + bookId;
+                
+                
+                $.ajax({
+                    method: 'GET',
+                    url: url,
+                    cache: false,
+                    contentType: 'html',
+                    traditional: true
+                })
+                .done(function (data) {
+                        var row = $("#" + module.BookItemIdPrefix + bookId);
+                        row.replaceWith(data);
+                        row.find("td .edit-button").on('click', module.ShowModal);
+                    })
+                .fail(function () {
+                    alert('Ошибка при загрузки книги. ');
+                });
+                
+                /*$("#" + module.BookItemIdPrefix + bookId).load(url, function() {
+                    
+                });*/
+
             } else {
                 alert(formatErrorMessage("Ошибка при обновлении книги !", data.ErrorMessages));
             }

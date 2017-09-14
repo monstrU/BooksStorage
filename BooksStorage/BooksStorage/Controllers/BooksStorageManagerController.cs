@@ -35,9 +35,10 @@ namespace BooksStorage.Controllers
         public IHttpActionResult SaveBook(BookViewModel book)
         {
 
-            var result = new OperationResult();
+            IOperationResult result;
             if (!ModelState.IsValid)
             {
+                result = new OperationResult();
                 foreach (var state in ModelState)
                 {
                     if (state.Value.Errors.Any())
@@ -57,11 +58,19 @@ namespace BooksStorage.Controllers
                     var converter = new BooksConverter(Constants.BookUrlsFolder);
                     var bookDb = converter.Convert(book);
                     BooksService.UpdateBook(bookDb);
-                    result.IsSuccess = true;
+                    result = new OperationResultGeneric<BookViewModel>
+                    {
+                        DataResult = book,
+                        IsSuccess = true
+                    };
+                    
                 }
                 catch (Exception ex)
                 {
-                    result.IsSuccess = false;
+                    result = new OperationResult
+                    {
+                        IsSuccess = false
+                    };
                     result.ErrorMessages.Add(ex.Message);
                 }
             }

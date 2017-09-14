@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BooksStorage.Utils;
 using BooksStorage.ViewModels;
 
 namespace DomainModel
@@ -36,6 +37,13 @@ namespace DomainModel
         public string BooksUrlFolder { get; set; }
 
         public IList<PersonViewModel> Authors { get; set; }
+
+        public static string BookItemidPrefix = "idBook";
+
+        public string BookItemId
+        {
+            get { return string.Format("{0}{1}", BookItemidPrefix, BookId); }
+        }
 
         public BookViewModel()
         {

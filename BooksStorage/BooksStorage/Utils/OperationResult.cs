@@ -2,9 +2,10 @@
 
 namespace BooksStorage.Utils
 {
-    public class OperationResult
+    public class OperationResult : IOperationResult
     {
         public bool IsSuccess { get; set; }
+        
         public IList<string> ErrorMessages { get; set; }
 
         public OperationResult()

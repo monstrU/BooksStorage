@@ -1,4 +1,6 @@
-﻿@model IEnumerable<DomainModel.BookViewModel>
+﻿@using BooksStorage.Utils
+@using DomainModel
+@model IEnumerable<DomainModel.BookViewModel>
 @{
 	ViewBag.Title = "Редактор книг";
 
@@ -31,7 +33,8 @@
 	<script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
-			BookEditorModule.InitEvents();
+		    BookEditorModule.InitEvents();
+		    BookEditorModule.BookItemIdPrefix = '@BookViewModel.BookItemidPrefix';
 		});
 	</script>
 }
