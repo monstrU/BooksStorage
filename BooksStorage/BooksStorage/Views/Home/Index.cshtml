@@ -20,25 +20,7 @@
 	<tbody>
 		@foreach (var book in Model)
 			{
-			<tr>
-				<td>@book.Title</td>
-			    <td>
-			        <ul class="authors">
-			            @foreach (var author in book.Authors)
-			            {
-			                <li>@string.Format("{0} {1}", author.Name, author.Family)</li>
-			            }
-			        </ul>
-			    </td>
-			    <td><img class="book-image" src="@book.DisplayBookFileName"/></td>
-				<td>@book.PagesCount</td>
-				<td>@book.Publisher</td>
-				<td>@book.ISBN</td>
-				<td>@string.Format("{0:dd.MM.yyyy}", book.PublishDate) </td>
-				<td >
-					<span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-book-id="@book.BookId"></span>
-				</td>
-			</tr>
+                @Html.DisplayFor(m=>book, "BookItem")
 			}
 	</tbody>
 </table>

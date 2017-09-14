@@ -305,6 +305,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\BookEditor\Load.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\BookItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

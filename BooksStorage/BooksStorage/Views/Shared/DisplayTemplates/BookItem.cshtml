@@ -1,0 +1,21 @@
+﻿@model DomainModel.BookViewModel
+<tr id="@string.Format("idBook{0}", Model.BookId)">
+    <td>@Model.Title</td>
+    <td>
+        <ul class="authors">
+            @foreach (var author in Model.Authors)
+            {
+                <li>@string.Format("{0} {1}", author.Name, author.Family)</li>
+            }
+        </ul>
+    </td>
+    <td><img class="Model-image" src="@Model.DisplayBookFileName" /></td>
+    <td>@Model.PagesCount</td>
+    <td>@Model.Publisher</td>
+    <td>@Model.ISBN</td>
+    <td>@string.Format("{0:dd.MM.yyyy}", Model.PublishDate) </td>
+    <td>
+        <span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-book-id="@Model.BookId"></span>
+    </td>
+</tr>
+
