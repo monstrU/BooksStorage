@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using System.Web.Http.ModelBinding;
+using System.Web.Http.ModelBinding.Binders;
+using BooksStorage.Utils.ModelBinders;
 
 namespace BooksStorage
 {
@@ -8,8 +12,12 @@ namespace BooksStorage
         {
             // Web API configuration and services
 
-            // Web API routes
-            config.MapHttpAttributeRoutes();
+            config.Services.Insert(typeof(ModelBinderProvider), 0,
+                new SimpleModelBinderProvider(typeof(DateTime), new CustomDateBinder()));
+        
+
+        // Web API routes
+        config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

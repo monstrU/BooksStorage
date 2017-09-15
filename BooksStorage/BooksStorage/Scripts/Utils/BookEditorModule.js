@@ -13,8 +13,9 @@
 		var dialog = $("#" + module.ModalDialogId);
 		dialog.on('shown.bs.modal', module.InitContent);
 
-		var editButtons = $("#idTabStorage tbody tr td .edit-button");
-		editButtons.on('click', module.ShowModal);
+		//var editButtons = $("#idTabStorage tbody tr td .edit-button");
+	    //editButtons.on('click', module.ShowModal);
+		$("#idTabStorage").on('click', "tbody tr td .edit-button", module.ShowModal);
 
 		$("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
 
@@ -41,10 +42,8 @@
 	    dialog.modal('show');
 	}
 	module.Save = function(event) {
-        var urlSave = module.BookManagerUrl + '/SaveBook';
         $('#' + module.ModalDialogId + " form").submit();
-        /* 
-    */
+        
     }
     module.SuccessSave=  function(data) {
         if (typeof (data) == 'object') {
@@ -66,18 +65,11 @@
                     traditional: true
                 })
                 .done(function (data) {
-                        var row = $("#" + module.BookItemIdPrefix + bookId);
-                        row.replaceWith(data);
-                        row.find("td .edit-button").on('click', module.ShowModal);
+                        $("#" + module.BookItemIdPrefix + bookId).replaceWith(data);
                     })
                 .fail(function () {
                     alert('Ошибка при загрузки книги. ');
                 });
-                
-                /*$("#" + module.BookItemIdPrefix + bookId).load(url, function() {
-                    
-                });*/
-
             } else {
                 alert(formatErrorMessage("Ошибка при обновлении книги !", data.ErrorMessages));
             }

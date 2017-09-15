@@ -21,18 +21,9 @@ namespace BooksStorage.Controllers
             BooksService = booksService;
         }
         
-        [ActionName("Test")]
-        [HttpGet]
-        public IHttpActionResult Test()
-        {
-            var c = Content(HttpStatusCode.InternalServerError, "");
-            return Ok("my name");
-        }
-
-        
         [ActionName("SaveBook")]
         [HttpPost]
-        public IHttpActionResult SaveBook(BookViewModel book)
+        public IHttpActionResult SaveBook([FromBody]BookViewModel book)
         {
 
             IOperationResult result;

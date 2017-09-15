@@ -61,7 +61,7 @@ namespace FacadeServices.Contracts.DataBases
                 BookId = 1,
                 Title = "Война и мир",
                 PublishDate = new DateTime(1991, 01, 02),
-                PagesCount = 1265,
+                PagesCount = 412,
                 Publisher = "Эксмо",
                 ISBN = "2-266-11156",
                 BookFileName = "",

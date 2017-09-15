@@ -23,10 +23,11 @@ namespace BooksStorage
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
-            
+
+
+
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            InitDataBase();
+            
             DependencyResolverInit();
         }
             
@@ -64,13 +65,6 @@ namespace BooksStorage
 
         }
 
-        private static void InitDataBase()
-        {
-            //var dbFactory = new SqLiteConnectionFactory();
-            //var DataProvider = new DataProvider(dbFactory);
-            //var DataService = new BookStorageService(DataProvider);
-            //DataService.InitSqDb();
-
-        }
+        
     }
 }
