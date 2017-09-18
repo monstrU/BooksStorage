@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
+using BooksStorage.ViewModels;
 using DomainModel;
 using FacadeServices.Interfaces.Services;
 
@@ -66,7 +67,6 @@ namespace BooksStorage.Controllers
                 }
             }
           
-            //NegotiatedContentResult<OperationResult> r = new NegotiatedContentResult<OperationResult>(HttpStatusCode.BadRequest, result, this);
             IHttpActionResult httpResult;
             if (result.IsSuccess)
                 httpResult = Ok(result);

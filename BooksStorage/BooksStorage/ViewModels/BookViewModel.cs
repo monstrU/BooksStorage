@@ -2,19 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using System.Web.Mvc;
-using BooksStorage.Utils;
-using BooksStorage.Utils.ModelBinders;
-using BooksStorage.Utils.Validations;
-using BooksStorage.ViewModels;
-
-namespace DomainModel
+namespace BooksStorage.ViewModels
 {
-    public class BookViewModel
+    public class BookViewModel : IValidatableObject
     {
         public int BookId { get; set; }
         [Required(ErrorMessage = "Введите название")]
@@ -35,7 +26,6 @@ namespace DomainModel
         [DisplayName("Дата публикации")]
         [DataType(DataType.DateTime,ErrorMessage = "Дата публикации должна быть введена в формате дд.мм.гггг")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
-        [PublishDateValidate]
         public DateTime PublishDate { get; set; }
 
         [Required]
@@ -64,6 +54,26 @@ namespace DomainModel
         public BookViewModel()
         {
             Authors = new List<PersonViewModel>();
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (validationContext.ObjectType != typeof (BookViewModel))
+            {
+                throw  new Exception("Валидатор объекта использован для недопустимого типа");
+            }
+            var book = validationContext.ObjectInstance as BookViewModel;
+            var results = new List<ValidationResult>();
+            if (book != null)
+            {
+                const int startPublishDateYear = 1980;
+                if (book.PublishDate.Year < startPublishDateYear)
+                    results.Add(new ValidationResult(
+                        $"Дата публикации книги {book.PublishDate:dd.MM.yyyy} должна быть позже {startPublishDateYear} года"));
+                else
+                    results.Add(ValidationResult.Success);
+            }
+            return results;
         }
     }
 }

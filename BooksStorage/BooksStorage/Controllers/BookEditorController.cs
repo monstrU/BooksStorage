@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
+using BooksStorage.ViewModels;
 using DomainModel;
 using FacadeServices.Interfaces.Services;
 
@@ -22,17 +23,11 @@ namespace BooksStorage.Controllers
             }
             else
             {
-                /*var dbFactory = new SqLiteConnectionFactory();
-                var DataProvider = new DataProvider(dbFactory);
-                var DataService = new BookStorageService(DataProvider);
-                DataService.InitSqDb();*/
-
                 var bookDb = BooksService.LoadBook(bookId.GetValueOrDefault());
                 var converter= new BooksConverter(Constants.BookUrlsFolder);
                 book = converter.Convert(bookDb);
             }
             return View("Load", book);
-            //return RedirectToAction("Load", "Home",new {bookId});
         }
 
 		// GET: BookEditor
