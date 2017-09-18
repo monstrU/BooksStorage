@@ -51,23 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\DataBases\BookStrogeDb.cs" />
     <Compile Include="Contracts\DataBases\MemoryStorage.cs" />
-    <Compile Include="Contracts\Mappers\BooksMapper.cs" />
-    <Compile Include="Contracts\Mappers\MapperBase.cs" />
     <Compile Include="Contracts\Services\BookService.cs" />
+    <Compile Include="Contracts\Services\ServiceBase.cs" />
     <Compile Include="Interfaces\DataBases\IMemoryStorage.cs" />
     <Compile Include="Interfaces\Services\IBooksService.cs" />
-    <Compile Include="Contracts\Services\ServiceBase.cs" />
-    <Compile Include="DataProvider.cs" />
-    <Compile Include="BookStorageService.cs" />
-    <Compile Include="Factories\SqLiteConnectionFactory.cs" />
-    <Compile Include="Interfaces\DataBases\IBooksMapper.cs" />
-    <Compile Include="Interfaces\DataBases\IBookStorageDB.cs" />
-    <Compile Include="Interfaces\DataBases\IMapper.cs" />
-    <Compile Include="Interfaces\IConnectionFactory.cs" />
     <Compile Include="Interfaces\IConverter.cs" />
-    <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Interfaces\IBookStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
