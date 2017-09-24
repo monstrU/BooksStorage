@@ -36,14 +36,6 @@ namespace BooksStorage.Controllers
             return View("Load", book);
         }
 
-		//[HttpPost]
-		public ActionResult Save(HttpPostedFileBase file)
-		{
-		    var files = Request.Files;
-            var converter = new BooksConverter(Constants.BookUrlsFolder);
-            //var dalBooks = DataService.LoadBooks();
-            //var books = dalBooks.Select(converter.Convert).ToList();
-            return View("Load", new BookViewModel());
-        }
+	
     }
 }

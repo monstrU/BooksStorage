@@ -292,6 +292,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Utils\BookEditorModule.js" />
+    <Content Include="Scripts\Utils\FileModule.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="uploadify.html" />
     <Content Include="Web.config" />

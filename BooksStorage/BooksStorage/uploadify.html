@@ -4,8 +4,8 @@
     <title></title>
     <meta charset="utf-8" />
     <script src="Scripts/jquery-3.0.0.js"></script>
-
-    <script src="Scripts/Utils/BookEditorModule.js"></script>
+    <script src="Scripts/Utils/FileModule.js"></script>
+   
     <script type="text/javascript">
        
        
@@ -13,9 +13,11 @@
 
             $('#submit').on('click', function(e) {
                 e.preventDefault();
-                BookEditorModule.UploadFile();
+                FileModule.UploadFile();
             });
-
+            $("#file").on('change', function() {
+              alert('change')  }
+            );
         });
     </script>
 </head>
