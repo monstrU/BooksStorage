@@ -31,7 +31,7 @@ namespace BooksStorage.Controllers
                 var converter= new BooksConverter(Constants.BookUrlsFolder);
                 book = converter.Convert(bookDb);
             }
-            var list = new Dictionary<string, string> {{"aa", "aaaa"}};
+         
 
             return View("Load", book);
         }

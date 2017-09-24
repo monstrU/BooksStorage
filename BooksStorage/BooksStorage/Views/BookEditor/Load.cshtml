@@ -15,9 +15,7 @@
                         OnFailure = "BookEditorModule.FailSave"
                     }, new
                     {
-                        role = "form",
-                        enctype = "multipart/form-data"
-                       
+                        role = "form"
                     }
                    ))
     {
@@ -53,13 +51,16 @@
             @Html.LabelFor(m => m.ISBN, new {@class = ""})
             @Html.TextBoxFor(m => m.ISBN, new {@class = "form-control", placeholder = "ISBN"})
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.BookFileName, new {@class = ""})
-            <input type="file" name="file" placeholder="изображение ..." class="form-control" >
-        </div>
+      
         @Html.HiddenFor(m => m.BookId)
-        <input type="submit" value="start"/>
+        @Html.HiddenFor(m=>m.BookFileName)
     }
+    <form role="form">
+        <div class="form-group">
+            @Html.LabelFor(m => m.BookFileName, new { @class = "", id="BookFileName" })
+            <input type="file" name="file" placeholder="изображение ..." class="form-control">
+        </div>
+    </form>
 </div>
 
 <!--
