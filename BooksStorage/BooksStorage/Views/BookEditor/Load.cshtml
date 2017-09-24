@@ -55,12 +55,12 @@
         @Html.HiddenFor(m => m.BookId)
         @Html.HiddenFor(m=>m.BookFileName)
     }
-    <form role="form">
+    <form role="form" onsubmit="javascript: return false;"></form>
         <div class="form-group">
-            @Html.LabelFor(m => m.BookFileName, new { @class = "", id="BookFileName" })
-            <input type="file" name="file" placeholder="изображение ..." class="form-control">
+            @Html.LabelFor(m => m.BookFileName, new { @class = "" })
+            <input type="file" name="file" id="file" placeholder="обложка ..." class="form-control">
         </div>
-    </form>
+  
 </div>
 
 <!--

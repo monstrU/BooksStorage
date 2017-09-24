@@ -6,16 +6,7 @@
     ViewBag.Title = "Редактор книг";
 
 }
-[1]
 
-
-
-
-<form enctype="multipart/form-data">
-    <input type="file" name="file" id="idUpload" />   
-    
-</form>
-[]2
 <table class="table table-bordered table-hover table-sortable" id="idTabStorage">
     <thead>
         <tr>
@@ -41,24 +32,12 @@
 @section scripts
 {
     <script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
-    <script src="~/Scripts/jquery.uploadify.min.js"></script>
-    <img src="~/Content/Images/uploadify-cancel.png"/>
 
     <script type="text/javascript">
         $(document).ready(function() {
             BookEditorModule.InitEvents();
             BookEditorModule.BookItemIdPrefix = '@BookViewModel.BookItemidPrefix';
-            $("#idUpload").uploadify({
-                'height': 30,
-                'swf': '/Content/Flash/uploader.swf',
-                'method': 'post',
-                'uploader': '/BookEditor/Save',
-                'cancelImg': '/Content/Images/uploadify-cancel.png',
-                //'auto': true,
-                'width': 120,
-                'onUploadSuccess': function() 
-            {  alert('ok');}
-        });
+           
     });
     </script>
 }

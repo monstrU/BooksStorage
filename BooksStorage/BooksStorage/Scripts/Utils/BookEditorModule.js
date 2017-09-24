@@ -13,11 +13,13 @@
 		var dialog = $("#" + module.ModalDialogId);
 		dialog.on('shown.bs.modal', module.InitContent);
 
-		//var editButtons = $("#idTabStorage tbody tr td .edit-button");
-	    //editButtons.on('click', module.ShowModal);
+
 		$("#idTabStorage").on('click', "tbody tr td .edit-button", module.ShowModal);
 
 		$("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
+
+	
+
 
 	}
 	module.InitContent = function (event) {
@@ -27,7 +29,12 @@
 	    if (!isNaN(bookId))
 	        url+='?bookId='+bookId;
 	    $("#" + module.ModalDialogId + ' .modal-body').load(url, function () {
-	        $.validator.unobtrusive.parse($("#" + module.ModalDialogId+" form"));
+	        $.validator.unobtrusive.parse($("#" + module.ModalDialogId + " form"));
+	        $("#file").on('change', function (e) {
+	            e.preventDefault();
+	            FileModule.UploadFile();
+	            return false;
+	        });
 			$("#" + module.ModalDialogId).modal('show');
 		});
 
@@ -75,11 +82,15 @@
             }
         }
     }
-        module.FailSave = function(data) {
-            if (typeof (data) == 'object') {
-                alert(formatErrorMessage("Ошибка при обновлении книги !", data.responseJSON.ErrorMessages));
-            }
+    module.FailSave = function(data) {
+        if (typeof (data) == 'object') {
+            alert(formatErrorMessage("Ошибка при обновлении книги !", data.responseJSON.ErrorMessages));
         }
-	
+    }
+
+    module.UploadFile = function() {
+        
+    }
+ 	
 	return module;
 }(BookEditorModule || {}));
