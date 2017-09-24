@@ -7,15 +7,21 @@
 
 <div class="contact-form">
 
-    @using (Ajax.BeginForm("SaveBook", "api/BooksStorageManager",
-        null, new AjaxOptions
-        {
-            HttpMethod = "POST",
-            OnSuccess = "BookEditorModule.SuccessSave",
-            OnFailure = "BookEditorModule.FailSave"
-        },
-        new {role = "form"}))
+    @using (Ajax.BeginForm("SaveBook", "BooksStorageManager",
+                    null, new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        OnSuccess = "BookEditorModule.SuccessSave",
+                        OnFailure = "BookEditorModule.FailSave"
+                    }, new
+                    {
+                        role = "form",
+                        enctype = "multipart/form-data"
+                       
+                    }
+                   ))
     {
+
         <div class="form-group">
         </div>
         <div class="form-group">
@@ -49,10 +55,10 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.BookFileName, new {@class = ""})
-            <input type="file" name="subject" placeholder="изображение ..." class="form-control" id="">
+            <input type="file" name="file" placeholder="изображение ..." class="form-control" >
         </div>
         @Html.HiddenFor(m => m.BookId)
-
+        <input type="submit" value="start"/>
     }
 </div>
 

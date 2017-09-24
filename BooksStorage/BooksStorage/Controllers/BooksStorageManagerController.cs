@@ -13,7 +13,7 @@ using FacadeServices.Interfaces.Services;
 
 namespace BooksStorage.Controllers
 {
-    public class BooksStorageManagerController : ApiController
+    public class BooksStorageManagerController : ApiControllerBase
     {
         public IBooksService BooksService { get; set; }
 
@@ -66,14 +66,10 @@ namespace BooksStorage.Controllers
                     result.ErrorMessages.Add(ex.Message);
                 }
             }
-          
-            IHttpActionResult httpResult;
-            if (result.IsSuccess)
-                httpResult = Ok(result);
-            else
-                httpResult = Content(HttpStatusCode.InternalServerError, result);
-            
-            return httpResult;
+        
+            return CreateResult(result);
         }
+
+      
     }
 }

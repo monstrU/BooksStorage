@@ -3,63 +3,86 @@
 @using DomainModel
 @model IEnumerable<BooksStorage.ViewModels.BookViewModel>
 @{
-	ViewBag.Title = "Редактор книг";
+    ViewBag.Title = "Редактор книг";
 
 }
+[1]
 
+
+
+
+<form enctype="multipart/form-data">
+    <input type="file" name="file" id="idUpload" />   
+    
+</form>
+[]2
 <table class="table table-bordered table-hover table-sortable" id="idTabStorage">
-	<thead>
-		<tr>
-			<th class="text-center">название</th>
-		    <th class="text-center">автор(ы)</th>
+    <thead>
+        <tr>
+            <th class="text-center">название</th>
+            <th class="text-center">автор(ы)</th>
             <th class="text-center">изображение</th>
-			<th class="text-center">кол-во страниц</th>
-			<th class="text-center">издательство</th>
-			<th class="text-center">ISBN</th>
-			<th class="text-center">год публикации</th>
-			<th class="text-center"></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var book in Model)
-			{
-                @Html.DisplayFor(m=>book, "BookItem")
-			}
-	</tbody>
+            <th class="text-center">кол-во страниц</th>
+            <th class="text-center">издательство</th>
+            <th class="text-center">ISBN</th>
+            <th class="text-center">год публикации</th>
+            <th class="text-center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            @Html.DisplayFor(m => book, "BookItem")
+            }
+    </tbody>
 </table>
 
 
 @section scripts
 {
-	<script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-		    BookEditorModule.InitEvents();
-		    BookEditorModule.BookItemIdPrefix = '@BookViewModel.BookItemidPrefix';
-		});
-	</script>
+    <script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
+    <script src="~/Scripts/jquery.uploadify.min.js"></script>
+    <img src="~/Content/Images/uploadify-cancel.png"/>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            BookEditorModule.InitEvents();
+            BookEditorModule.BookItemIdPrefix = '@BookViewModel.BookItemidPrefix';
+            $("#idUpload").uploadify({
+                'height': 30,
+                'swf': '/Content/Flash/uploader.swf',
+                'method': 'post',
+                'uploader': '/BookEditor/Save',
+                'cancelImg': '/Content/Images/uploadify-cancel.png',
+                //'auto': true,
+                'width': 120,
+                'onUploadSuccess': function() 
+            {  alert('ok');}
+        });
+    });
+    </script>
 }
 
 @section additinal_html
 {
-	<div id="idBookBox" class="modal ">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<!-- Заголовок модального окна -->
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title">Книжное хранилище</h4>
-			</div>
-			<!-- Основное содержимое модального окна -->
-			<div class="modal-body">
-			</div>
-			<!-- Футер модального окна -->
-		    <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-default">Сохранить изменения</button>
-		        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Закрыть</button>
-		    </div>
-			
-		</div>
-	</div>
-</div>
+    <div id="idBookBox" class="modal ">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Заголовок модального окна -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Книжное хранилище</h4>
+                </div>
+                <!-- Основное содержимое модального окна -->
+                <div class="modal-body">
+                </div>
+                <!-- Футер модального окна -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default">Сохранить изменения</button>
+                    <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Закрыть</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 }

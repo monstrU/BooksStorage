@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Http.ModelBinding;
 using System.Web.Http.ModelBinding.Binders;
 using BooksStorage.Utils.ModelBinders;
+using BooksStorage.Utils.ModelBinders.WebApi;
 
 namespace BooksStorage
 {

@@ -80,6 +80,35 @@
                 alert(formatErrorMessage("Ошибка при обновлении книги !", data.responseJSON.ErrorMessages));
             }
         }
-	
+	module.UploadFile = function() {
+	    var formData = new FormData();
+
+	    // We'll grab our file upload form element (there's only one, hence [0]).
+	    var file = $('#file')[0];
+
+	    // If this example we'll just grab the one file (and hope there's at least one).
+	    formData.append("file", file.files[0]);
+
+	    var urlUpload = "/api/file/upload";
+	    //var urlUpload = "/bookeditor/save";
+	    $.ajax({
+	        url: urlUpload, 
+	        data: formData, 
+	        cache: false,
+	        contentType: false,
+	        enctype: 'multipart/form-data',
+	        processData: false,
+            method: 'POST',
+	        type: 'POST',
+
+	        done: function() {
+	            // Success!
+	            alert('Woot!');
+	        },
+	        fail:function(){
+	        
+	    }
+	});
+	}
 	return module;
 }(BookEditorModule || {}));

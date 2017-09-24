@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Net.Http;
+using System.Web;
 using System.Web.Mvc;
 using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
@@ -27,17 +31,19 @@ namespace BooksStorage.Controllers
                 var converter= new BooksConverter(Constants.BookUrlsFolder);
                 book = converter.Convert(bookDb);
             }
+            var list = new Dictionary<string, string> {{"aa", "aaaa"}};
+
             return View("Load", book);
         }
 
-		// GET: BookEditor
-		public ActionResult Save(BookViewModel book)
-        {
-            
+		//[HttpPost]
+		public ActionResult Save(HttpPostedFileBase file)
+		{
+		    var files = Request.Files;
             var converter = new BooksConverter(Constants.BookUrlsFolder);
             //var dalBooks = DataService.LoadBooks();
             //var books = dalBooks.Select(converter.Convert).ToList();
-            return View("Load", book);
+            return View("Load", new BookViewModel());
         }
     }
 }

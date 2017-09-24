@@ -33,9 +33,10 @@ namespace BooksStorage.ViewModels
 
         public string ISBN { get; set; }
 
+        [DisplayName("Обложка")]
         public string BookFileName { get; set; }
 
-        public string DisplayBookFileName { get
+        public string DisplayBookSrcImage { get
         {
             return string.Format("{0}/{1}", BooksUrlFolder, BookFileName);
         } }
