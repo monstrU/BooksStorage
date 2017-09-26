@@ -52,7 +52,7 @@
 	    dialog.modal('show');
 	}
 	module.Save = function(event) {
-        $('#' + module.ModalDialogId + " form").submit();
+	    $('#' + module.ModalDialogId + " form[id='idSaveBook']").submit();
         
     }
     module.SuccessSave=  function(data) {

@@ -7,7 +7,7 @@
 
 <div class="contact-form">
 
-    @using (Ajax.BeginForm("SaveBook", "BooksStorageManager",
+    @using (Ajax.BeginForm("SaveBook", "api/BooksStorageManager",
                     null, new AjaxOptions
                     {
                         HttpMethod = "POST",
@@ -15,7 +15,8 @@
                         OnFailure = "BookEditorModule.FailSave"
                     }, new
                     {
-                        role = "form"
+                        role = "form",
+                        id="idSaveBook"
                     }
                    ))
     {
