@@ -1,13 +1,9 @@
-﻿@using BooksStorage.Utils
-@using BooksStorage.ViewModels
-@using DomainModel
-@model IEnumerable<BooksStorage.ViewModels.BookViewModel>
+﻿@using BooksStorage.ViewModels
+@model IEnumerable<BookViewModel>
 @{
     ViewBag.Title = "Редактор книг";
 
 }
-<input type="file" name="filemy" id="filemy" placeholder="обложка ..." class="form-control">
-<button type="button" id="runUpload" >run</button>
 <table class="table table-bordered table-hover table-sortable" id="idTabStorage">
     <thead>
         <tr>
@@ -32,25 +28,13 @@
 
 @section scripts
 {
-    <script type="text/javascript" src="/Scripts/Utils/BookEditorModule.js"></script>
+
 
     <script type="text/javascript">
         $(document).ready(function() {
             BookEditorModule.InitEvents();
             BookEditorModule.BookItemIdPrefix = '@BookViewModel.BookItemidPrefix';
-       
-            $("#file2").on('change', function (e) {
-                e.preventDefault();
-                FileModule.UploadFile();
-                return false;
-            });
-
-            $("#runUpload").on('click', function(e) {
-                e.preventDefault();
-                FileModule.UploadFile();
-                
-                return false;
-            });
+   
         });
     </script>
 }

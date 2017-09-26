@@ -50,7 +50,7 @@ namespace BooksStorage.Controllers
                     var converter = new BooksConverter(Constants.BookUrlsFolder);
                     var bookDb = converter.Convert(book);
                     BooksService.UpdateBook(bookDb);
-                    result = new OperationResultGeneric<BookViewModel>
+                    result = new OperationResult<BookViewModel>
                     {
                         DataResult = book,
                         IsSuccess = true

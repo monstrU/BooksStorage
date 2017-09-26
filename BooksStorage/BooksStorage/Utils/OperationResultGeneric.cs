@@ -2,7 +2,7 @@
 
 namespace BooksStorage.Utils
 {
-    public class OperationResultGeneric<T>: OperationResult where T : class
+    public class OperationResult<T>: OperationResult where T : class
     {
         public T DataResult { get; set; }
     }

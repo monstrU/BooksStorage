@@ -37,12 +37,12 @@ namespace BooksStorage.Controllers
             try
             {
                 await Request.Content.ReadAsMultipartAsync(provider);
-
+                string filename="";
                 foreach (var file in provider.Contents)
                 {
                     if (!string.IsNullOrEmpty(file.Headers.ContentDisposition.FileName))
                     {
-                        var filename = file.Headers.ContentDisposition.FileName.Trim('\"');
+                        filename = file.Headers.ContentDisposition.FileName.Trim('\"');
                         byte[] fileArray = await file.ReadAsByteArrayAsync();
 
                         using (FileStream fs = new FileStream(root + filename, FileMode.Create))
@@ -51,9 +51,10 @@ namespace BooksStorage.Controllers
                         }
                     }
                 }
-                result= new OperationResult
+                result= new OperationResult<string>
                 {
-                    IsSuccess = true
+                    IsSuccess = true,
+                    DataResult = filename
                 };
             }
             catch (Exception exception)

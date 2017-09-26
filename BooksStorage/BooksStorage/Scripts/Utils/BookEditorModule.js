@@ -30,11 +30,14 @@
 	        url+='?bookId='+bookId;
 	    $("#" + module.ModalDialogId + ' .modal-body').load(url, function () {
 	        $.validator.unobtrusive.parse($("#" + module.ModalDialogId + " form"));
-	        $("#file").on('change', function (e) {
-	            e.preventDefault();
-	            FileModule.UploadFile();
-	            return false;
+
+	        FileModule.InitUploadControls(function() {
+	            $("#" + module.ModalDialogId + " button").prop("disabled", true);
+	        }, function(fileName) {
+	            $("#" + module.ModalDialogId + " button").prop("disabled", false);
+	            $("input[name='BookFileName']").val(fileName);
 	        });
+	    
 			$("#" + module.ModalDialogId).modal('show');
 		});
 
