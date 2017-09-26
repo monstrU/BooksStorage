@@ -19,12 +19,17 @@
             processData: false,
             method: 'POST',
 
-            success: function () {
+            success: function (data) {
                 
                 alert('Woot!');
+                return false;
             },
             error: function () {
                 alert('Ошибка во время загрузки файлов.');
+                return false;
+            },
+            done : function() {
+                alert('done');
             }
         });
     }

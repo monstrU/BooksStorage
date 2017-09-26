@@ -6,7 +6,8 @@
     ViewBag.Title = "Редактор книг";
 
 }
-
+<input type="file" name="filemy" id="filemy" placeholder="обложка ..." class="form-control">
+<button type="button" id="runUpload" >run</button>
 <table class="table table-bordered table-hover table-sortable" id="idTabStorage">
     <thead>
         <tr>
@@ -37,8 +38,20 @@
         $(document).ready(function() {
             BookEditorModule.InitEvents();
             BookEditorModule.BookItemIdPrefix = '@BookViewModel.BookItemidPrefix';
-           
-    });
+       
+            $("#file2").on('change', function (e) {
+                e.preventDefault();
+                FileModule.UploadFile();
+                return false;
+            });
+
+            $("#runUpload").on('click', function(e) {
+                e.preventDefault();
+                FileModule.UploadFile();
+                
+                return false;
+            });
+        });
     </script>
 }
 

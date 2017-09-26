@@ -4,26 +4,48 @@
     <title></title>
     <meta charset="utf-8" />
     <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script src="Scripts/Utils/FileModule.js"></script>
-   
+    <link href="Content/fileinput.min.css" rel="stylesheet" />
+    <script src="Scripts/fileinput.min.js"></script>
+
     <script type="text/javascript">
        
-       
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $('#submit').on('click', function(e) {
-                e.preventDefault();
-                FileModule.UploadFile();
+            $("#filemy").on('fileselect', function (event, previewId, index) {
+                $("#filemy").fileinput('upload');
             });
-            $("#file").on('change', function() {
-              alert('change')  }
-            );
+            $("#filemy").on('filepreajax', function (event, previewId, index) {
+                //alert('loaded');
+               console.log('start');
+            });
+            
+            $('#filemy').on('fileuploaded', function (event, data, previewId, index) {
+                var form = data.form, files = data.files, extra = data.extra,
+                    response = data.response, reader = data.reader;
+                console.log('File uploaded triggered');
+            });
+
+
+            $('#filemy').on('fileerror', function (event, data, msg) {
+                console.log(data.id);
+            
+            });
+            $("#filemy").fileinput({
+                showPreview: false,
+                showUpload: false,
+                //elErrorContainer: '#kartik-file-errors',
+                allowedFileExtensions: ["jpg", "png", "gif"],
+                uploadUrl: "/api/file/upload"
+                
+            });
         });
     </script>
 </head>
 
 <body>
-<input type="file" name="file" id="file"/>
-<input type="button" value="загрузить" id="submit"/>
+<input type="file" name="filemy" id="filemy"/>
+
 </body>
 </html>

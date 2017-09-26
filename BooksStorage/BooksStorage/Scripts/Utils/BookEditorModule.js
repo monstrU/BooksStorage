@@ -88,9 +88,6 @@
         }
     }
 
-    module.UploadFile = function() {
-        
-    }
- 	
+    
 	return module;
 }(BookEditorModule || {}));

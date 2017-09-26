@@ -40,12 +40,15 @@ namespace BooksStorage.Controllers
 
                 foreach (var file in provider.Contents)
                 {
-                    var filename = file.Headers.ContentDisposition.FileName.Trim('\"');
-                    byte[] fileArray = await file.ReadAsByteArrayAsync();
-
-                    using (FileStream fs = new FileStream(root + filename, FileMode.Create))
+                    if (!string.IsNullOrEmpty(file.Headers.ContentDisposition.FileName))
                     {
-                        await fs.WriteAsync(fileArray, 0, fileArray.Length);
+                        var filename = file.Headers.ContentDisposition.FileName.Trim('\"');
+                        byte[] fileArray = await file.ReadAsByteArrayAsync();
+
+                        using (FileStream fs = new FileStream(root + filename, FileMode.Create))
+                        {
+                            await fs.WriteAsync(fileArray, 0, fileArray.Length);
+                        }
                     }
                 }
                 result= new OperationResult
