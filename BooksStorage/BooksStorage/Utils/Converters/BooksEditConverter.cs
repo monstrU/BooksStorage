@@ -1,21 +1,26 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using BooksStorage.ViewModels;
 using DomainModel;
 using FacadeServices.Interfaces;
 
 namespace BooksStorage.Utils.Converters
 {
-    public class BooksConverter: IConverter<BookModel, BookViewModel >
+    public class BooksEditConverter: IConverter<BookModel, BookEditViewModel>
     {
-        private string BooksUrlFolder { get; set; }
-        public BooksConverter(string bookUrlsFolder)
+        private string BooksUrlFolder { get;  }
+        private  IList<PersonModel> Persons { get; }
+        public BooksEditConverter(string bookUrlsFolder, IList<PersonModel> persons)
         {
             BooksUrlFolder = bookUrlsFolder;
+            Persons = persons;
         }
 
-        public BookModel Convert(BookViewModel source)
+        public BookModel Convert(BookEditViewModel source)
         {
-            var converter = new PersonConverter();
+            var converter = new PersonEditConverter(Persons);
             return new BookModel
             {
                 BookId = source.BookId,
@@ -25,14 +30,17 @@ namespace BooksStorage.Utils.Converters
                 PagesCount = source.PagesCount,
                 ISBN = source.ISBN,
                 BookFileName = source.BookFileName,
-                Authors = source.Authors.Select(converter.Convert).ToArray()
+                Authors = source.FullAuthorsList
+                            .Where(a=>a.IsSelected)
+                            .Select(converter.Convert)
+                            .ToArray()
             };
         }
 
-        public BookViewModel Convert(BookModel source)
+        public BookEditViewModel Convert(BookModel source)
         {
-            var converter = new PersonConverter();
-            return new BookViewModel
+            var converter = new PersonEditConverter(source.Authors);
+            return new BookEditViewModel
             {
                 BookId = source.BookId,
                 Title = source.Title,
@@ -42,7 +50,7 @@ namespace BooksStorage.Utils.Converters
                 ISBN = source.ISBN,
                 BookFileName = source.BookFileName,
                 BooksUrlFolder = BooksUrlFolder,
-                Authors = source.Authors.Select(converter.Convert).ToArray()
+                FullAuthorsList = Persons.Select(converter.Convert).ToArray()
             };
         }
     }

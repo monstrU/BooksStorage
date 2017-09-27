@@ -21,29 +21,20 @@ namespace BooksStorage.Controllers
 
         public ActionResult Load(Nullable<int> bookId)
         {
-            BookViewModel book;
+            BookEditViewModel book;
             if (!bookId.HasValue)
             {
-                book = new BookViewModel();
+                book = new BookEditViewModel();
             }
             else
             {
                 var bookDb = BooksService.LoadBook(bookId.GetValueOrDefault());
-                var converter= new BooksConverter(Constants.BookUrlsFolder);
-                book = converter.Convert(bookDb);
-
                 IList<PersonModel> persons = BooksService.LoadPersons();
-                var personConverter = new PersonConverter();
-
-                var blPersons = persons.Select(personConverter.Convert).ToList();
-                foreach (var person in blPersons)
-                {
-                    person.IsSelected = book.Authors.Any(a => a.PersonId == person.PersonId);
-                }
-
-                book.FullAuthorsList = blPersons;
+                var converter= new BooksEditConverter(Constants.BookUrlsFolder, persons);
+                book = converter.Convert(bookDb);
+                
             }
-         
+
 
             return View("Load", book);
         }

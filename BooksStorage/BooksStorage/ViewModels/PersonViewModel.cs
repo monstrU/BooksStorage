@@ -18,10 +18,5 @@ namespace BooksStorage.ViewModels
                 return string.Format("{0} {1}", Name, Family);
             }
         }
-
-        /// <summary>
-        /// автор указан у книги
-        /// </summary>
-        public bool IsSelected { get; set; }
     }
 }

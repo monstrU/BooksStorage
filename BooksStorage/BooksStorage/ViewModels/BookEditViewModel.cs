@@ -3,9 +3,9 @@
 namespace BooksStorage.ViewModels
 {
     /// <summary>
-    /// книга для просмотра книги
+    /// класс для редактирования книги  - с полным списком авторов
     /// </summary>
-    public class BookViewModel : BookShortViewModel
+    public class BookEditViewModel : BookShortViewModel
     {
         public string DisplayBookSrcImage {
             get {
@@ -15,16 +15,18 @@ namespace BooksStorage.ViewModels
 
         public string BooksUrlFolder { get; set; }
 
-        public IList<PersonViewModel> Authors { get; set; }
         
+
+        public IList<PersonEditViewModel> FullAuthorsList { get; set; }
+
         public string BookItemId
         {
             get { return string.Format("{0}{1}", BookItemidPrefix, BookId); }
         }
 
-        public BookViewModel()
+        public BookEditViewModel()
         {
-            Authors = new List<PersonViewModel>();
+            FullAuthorsList = new List<PersonEditViewModel>();
         }
     }
 }
