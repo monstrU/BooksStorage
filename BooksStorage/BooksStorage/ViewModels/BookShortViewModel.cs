@@ -43,11 +43,13 @@ namespace BooksStorage.ViewModels
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (validationContext.ObjectType != typeof (BookViewModel))
+            if ((validationContext.ObjectType.BaseType != null && validationContext.ObjectType.BaseType != typeof(BookShortViewModel)) ||
+                (validationContext.ObjectType.BaseType == null && validationContext.ObjectType != typeof(BookShortViewModel)))
             {
                 throw  new Exception("Валидатор объекта использован для недопустимого типа");
             }
-            var book = validationContext.ObjectInstance as BookViewModel;
+
+            var book = validationContext.ObjectInstance as BookShortViewModel;
             var results = new List<ValidationResult>();
             if (book != null)
             {

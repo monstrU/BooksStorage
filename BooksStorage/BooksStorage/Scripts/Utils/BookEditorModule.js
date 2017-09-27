@@ -5,7 +5,10 @@
 	module.BookManagerUrl = '/api/BooksStorageManager';
     module.BookItemIdPrefix = '';
     var formatErrorMessage = function(info, errorMessages) {
-        return info + '\n' + errorMessages.join('\n');
+        var message = info;
+        if (typeof (errorMessages)=='object')
+            message += '\n' + errorMessages.join('\n');
+        return message;
     }
 
 	module.InitEvents = function () {
@@ -77,7 +80,7 @@
                 .done(function (data) {
                         $("#" + module.BookItemIdPrefix + bookId).replaceWith(data);
                     })
-                .fail(function () {
+                .fail(function (data) {
                     alert('Ошибка при загрузки книги. ');
                 });
             } else {

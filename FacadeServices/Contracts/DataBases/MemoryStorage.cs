@@ -122,13 +122,17 @@ namespace FacadeServices.Contracts.DataBases
             return Books.FirstOrDefault(b => b.BookId == bookId);
         }
         
-        public void UpdateBook(BookModel oldBook, BookModel newBook)
+        public void UpdateBook(BookModel book)
         {
-            var bookIndex = Books.FindIndex(i => i.BookId == oldBook.BookId);
+            var bookIndex = Books.FindIndex(i => i.BookId == book.BookId);
             if (bookIndex >= 0)
             {
                 Books.RemoveAt(bookIndex);
-                Books.Add(newBook);
+                Books.Add(book);
+            }
+            else
+            {
+                throw new Exception($"Не удалось найти книгу {book.Title} в хранилище.");
             }
         }
 

@@ -24,15 +24,7 @@ namespace FacadeServices.Contracts.Services
 
         public void UpdateBook(BookModel book)
         {
-            var find = MemoryStorage.LoadBook(book.BookId);
-            if (find != null)
-            {
-                MemoryStorage.UpdateBook(find, book);
-            }
-            else
-            {
-                throw new Exception($"Не удалось найти книгу {book.Title} в хранилище.");
-            }
+                MemoryStorage.UpdateBook(book);
         }
 
         public IList<PersonModel> LoadPersons()

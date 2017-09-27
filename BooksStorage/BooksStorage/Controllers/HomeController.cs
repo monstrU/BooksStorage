@@ -24,5 +24,14 @@ namespace BooksStorage.Controllers
             return View("Index", books);
         }
         
+        public ActionResult BookItem(int bookId)
+        {
+            var dalBook = BooksService.LoadBook(bookId);
+
+            var converter = new BooksConverter(Constants.BookUrlsFolder);
+
+            var books = converter.Convert(dalBook);
+            return View("DisplayTemplates/BookItem", books);
+        }
     }
 }

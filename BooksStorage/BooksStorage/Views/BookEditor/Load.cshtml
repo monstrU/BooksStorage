@@ -56,12 +56,27 @@
             <label>Авторы</label>
             <div class="container-fluid">
                 <dl class="content-items">
-                    @foreach (var author in Model.FullAuthorsList)
+                   
+
+                    @for (int index = 0; index < Model.FullAuthorsList.Count; index++)
                     {
-                        <dt><input type="checkbox" value="" id="@string.Format("idAuthor{0}", author.PersonId)" @(author.IsSelected ? "checked" : "") /></dt>
-                        <dd><label for="@(string.Format("idAuthor{0}",author.PersonId))">@author.DisplayAuthorName</label></dd>
+                        var author = Model.FullAuthorsList[index];
+                        <dt>
+                            @Html.CheckBoxFor(a => Model.FullAuthorsList[index].IsSelected, new { id= string.Format("idAuthor{0}", author.PersonId) })
+
+                            @Html.HiddenFor(a => Model.FullAuthorsList[index].PersonId)
+                            @Html.HiddenFor(a => Model.FullAuthorsList[index].Family)
+                            @Html.HiddenFor(a => Model.FullAuthorsList[index].Name)
+
+                        </dt>
+                        <dd>
+                            
+                            <label for="@string.Format("idAuthor{0}", author.PersonId)">@author.DisplayAuthorName</label>
+                        </dd>
                     }
                 </dl>
+
+
 
             
             </div>

@@ -15,8 +15,8 @@ namespace BooksStorage.ViewModels
 
         public string BooksUrlFolder { get; set; }
 
-        
 
+        public int[] CheckedAuthors { get; set; }
         public IList<PersonEditViewModel> FullAuthorsList { get; set; }
 
         public string BookItemId
@@ -27,6 +27,7 @@ namespace BooksStorage.ViewModels
         public BookEditViewModel()
         {
             FullAuthorsList = new List<PersonEditViewModel>();
+            CheckedAuthors  = new int[0]; 
         }
     }
 }

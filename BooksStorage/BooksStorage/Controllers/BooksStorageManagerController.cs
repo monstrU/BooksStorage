@@ -24,7 +24,7 @@ namespace BooksStorage.Controllers
         
         [ActionName("SaveBook")]
         [HttpPost]
-        public IHttpActionResult SaveBook([FromBody]BookViewModel book)
+        public IHttpActionResult SaveBook([FromBody]BookEditViewModel book)
         {
 
             IOperationResult result;
@@ -47,10 +47,11 @@ namespace BooksStorage.Controllers
             {
                 try
                 {
-                    var converter = new BooksConverter(Constants.BookUrlsFolder);
+                    IList<PersonModel> persons = BooksService.LoadPersons();
+                    var converter = new BooksEditConverter(Constants.BookUrlsFolder, persons);
                     var bookDb = converter.Convert(book);
                     BooksService.UpdateBook(bookDb);
-                    result = new OperationResult<BookViewModel>
+                    result = new OperationResult<BookEditViewModel>
                     {
                         DataResult = book,
                         IsSuccess = true
