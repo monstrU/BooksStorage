@@ -34,5 +34,10 @@ namespace FacadeServices.Contracts.Services
                 throw new Exception($"Не удалось найти книгу {book.Title} в хранилище.");
             }
         }
+
+        public IList<PersonModel> LoadPersons()
+        {
+            return MemoryStorage.LoadPersons();
+        }
     }
 }

@@ -8,24 +8,24 @@
 <div class="contact-form">
 
     @using (Ajax.BeginForm("SaveBook", "api/BooksStorageManager",
-                    null, new AjaxOptions
-                    {
-                        HttpMethod = "POST",
-                        OnSuccess = "BookEditorModule.SuccessSave",
-                        OnFailure = "BookEditorModule.FailSave"
-                    }, new
-                    {
-                        role = "form",
-                        id="idSaveBook"
-                    }
-                   ))
+                            null, new AjaxOptions
+                            {
+                                HttpMethod = "POST",
+                                OnSuccess = "BookEditorModule.SuccessSave",
+                                OnFailure = "BookEditorModule.FailSave"
+                            }, new
+                            {
+                                role = "form",
+                                id = "idSaveBook"
+                            }
+                           ))
     {
 
         <div class="form-group">
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Title, new {@class = ""})
-            @Html.TextBoxFor(m => m.Title, new {@class = "form-control", placeholder = "Название ..."})
+            @Html.LabelFor(m => m.Title, new { @class = "" })
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Название ..." })
             @Html.ValidationMessageFor(m => m.Title)
         </div>
         <div class="form-group">
@@ -34,34 +34,47 @@
 
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.PagesCount, new {@class = ""})
-            @Html.TextBoxFor(m => m.PagesCount, new {@class = "form-control", placeholder = "Количество страниц ..."})
+            @Html.LabelFor(m => m.PagesCount, new { @class = "" })
+            @Html.TextBoxFor(m => m.PagesCount, new { @class = "form-control", placeholder = "Количество страниц ..." })
             @Html.ValidationMessageFor(m => m.PagesCount)
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Publisher, new {@class = ""})
-            @Html.TextBoxFor(m => m.Publisher, new {@class = "form-control", placeholder = "Дата публикации ..."})
+            @Html.LabelFor(m => m.Publisher, new { @class = "" })
+            @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", placeholder = "Дата публикации ..." })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.PublishDate, new {@class = ""})
-            @Html.TextBoxFor(m => m.PublishDate, "{0:dd.MM.yyyy}", new {@class = "form-control", placeholder = "Дата публикации"})
-            
+            @Html.LabelFor(m => m.PublishDate, new { @class = "" })
+            @Html.TextBoxFor(m => m.PublishDate, "{0:dd.MM.yyyy}", new { @class = "form-control", placeholder = "Дата публикации" })
+
             @Html.ValidationMessageFor(m => m.PublishDate)
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.ISBN, new {@class = ""})
-            @Html.TextBoxFor(m => m.ISBN, new {@class = "form-control", placeholder = "ISBN"})
+            @Html.LabelFor(m => m.ISBN, new { @class = "" })
+            @Html.TextBoxFor(m => m.ISBN, new { @class = "form-control", placeholder = "ISBN" })
         </div>
-      
+        <div class="form-group">
+            <label>Авторы</label>
+            <div class="container-fluid">
+                <dl class="content-items">
+                    @foreach (var author in Model.FullAuthorsList)
+                    {
+                        <dt><input type="checkbox" value="" id="@string.Format("idAuthor{0}", author.PersonId)" @(author.IsSelected ? "checked" : "") /></dt>
+                        <dd><label for="@(string.Format("idAuthor{0}",author.PersonId))">@author.DisplayAuthorName</label></dd>
+                    }
+                </dl>
+
+            
+            </div>
+        </div>
         @Html.HiddenFor(m => m.BookId)
-        @Html.HiddenFor(m=>m.BookFileName)
+        @Html.HiddenFor(m => m.BookFileName)
     }
     <form role="form" onsubmit="javascript: return false;"></form>
-        <div class="form-group">
-            @Html.LabelFor(m => m.BookFileName, new { @class = "" })
-            <input type="file" name="file" id="file" placeholder="обложка ..." class="form-control">
-        </div>
-  
+    <div class="form-group">
+        @Html.LabelFor(m => m.BookFileName, new { @class = "" })
+        <input type="file" name="file" id="file" placeholder="обложка ..." class="form-control">
+    </div>
+
 </div>
 
 <!--

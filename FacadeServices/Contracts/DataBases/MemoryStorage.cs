@@ -9,47 +9,47 @@ namespace FacadeServices.Contracts.DataBases
     public class MemoryStorage :IMemoryStorage
     {
         public List<BookModel> Books { get; set; }
-        public IList<PersonModel> Authors { get; set; }
+        public IList<PersonModel> Persons { get; set; }
         public MemoryStorage()
         {
             Books = new List<BookModel>();
-            Authors = new List<PersonModel>();
+            Persons = new List<PersonModel>();
             InitTestDb();
         }
 
         private void InitTestDb()
         {
-            Authors.Add(new PersonModel
+            Persons.Add(new PersonModel
             {
                 PersonId = 1,
                 Name = "Лев",
                 Family = "Толстой"
             });
-            Authors.Add(new PersonModel
+            Persons.Add(new PersonModel
             {
                 PersonId = 2,
                 Name = "Илья",
                 Family ="Ильф"
             });
-            Authors.Add(new PersonModel
+            Persons.Add(new PersonModel
             {
                 PersonId = 3,
                 Name = "Евгений",
                 Family ="Петров"
             });
-            Authors.Add(new PersonModel
+            Persons.Add(new PersonModel
             {
                 PersonId = 4,
                 Name = "Аркадий",
                 Family ="Стругацкий"
             });
-            Authors.Add(new PersonModel
+            Persons.Add(new PersonModel
             {
                 PersonId = 5,
                 Name = "Борис",
                 Family ="Стругацкий"
             });
-            Authors.Add(new PersonModel
+            Persons.Add(new PersonModel
             {
                 PersonId = 6,
                 Name = "Михаил",
@@ -65,7 +65,7 @@ namespace FacadeServices.Contracts.DataBases
                 Publisher = "Эксмо",
                 ISBN = "2-266-11156",
                 BookFileName = "",
-                Authors = new List<PersonModel> {Authors[0]}
+                Authors = new List<PersonModel> {Persons[0]}
             });
             Books.Add(new BookModel
             {
@@ -76,7 +76,7 @@ namespace FacadeServices.Contracts.DataBases
                 Publisher = "Кантата",
                 ISBN = "2-266-14456",
                 BookFileName ="",
-                Authors = new List<PersonModel> {  Authors[1], Authors[2]}
+                Authors = new List<PersonModel> {  Persons[1], Persons[2]}
             });
             Books.Add(new BookModel
             {
@@ -87,7 +87,7 @@ namespace FacadeServices.Contracts.DataBases
                 Publisher = "Terra",
                 ISBN = "978-5-17-057848-1",
                 BookFileName = "Arkadij_Strugatskij_Boris_Strugatskij__Piknik_na_obochine.jpeg",
-                Authors = new List<PersonModel> {Authors[3], Authors[4]}
+                Authors = new List<PersonModel> {Persons[3], Persons[4]}
             });
             Books.Add(new BookModel
             {
@@ -98,7 +98,7 @@ namespace FacadeServices.Contracts.DataBases
                 Publisher = "АСТ",
                 ISBN = "5-17-015967-6",
                 BookFileName = "Mihail_Bulgakov__Teatralnyj_roman.jpeg",
-                Authors = new List<PersonModel> {  Authors[5] }
+                Authors = new List<PersonModel> {  Persons[5] }
             });
         }
 
@@ -109,7 +109,7 @@ namespace FacadeServices.Contracts.DataBases
 
         public void Add(PersonModel person)
         {
-            Authors.Add(person);
+            Persons.Add(person);
         }
 
         public IList<BookModel> LoadBooks()
@@ -130,6 +130,11 @@ namespace FacadeServices.Contracts.DataBases
                 Books.RemoveAt(bookIndex);
                 Books.Add(newBook);
             }
+        }
+
+        public IList<PersonModel> LoadPersons()
+        {
+            return Persons;
         }
     }
 }

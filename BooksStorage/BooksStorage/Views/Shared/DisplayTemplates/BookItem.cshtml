@@ -9,7 +9,7 @@
         <ul class="authors">
             @foreach (var author in Model.Authors)
             {
-                <li>@string.Format("{0} {1}", author.Name, author.Family)</li>
+                <li>@author.DisplayAuthorName</li>
             }
         </ul>
     </td>

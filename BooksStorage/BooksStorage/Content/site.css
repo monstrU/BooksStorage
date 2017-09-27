@@ -8,3 +8,13 @@
 .contact-form {
     
 }
+
+dl.content-items dt{
+    float: left;
+    width: 3ex;
+}
+
+dl.content-items dd{
+    margin-left: 4ex;
+    text-align: left;
+}

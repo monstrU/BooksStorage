@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +31,17 @@ namespace BooksStorage.Controllers
                 var bookDb = BooksService.LoadBook(bookId.GetValueOrDefault());
                 var converter= new BooksConverter(Constants.BookUrlsFolder);
                 book = converter.Convert(bookDb);
+
+                IList<PersonModel> persons = BooksService.LoadPersons();
+                var personConverter = new PersonConverter();
+
+                var blPersons = persons.Select(personConverter.Convert).ToList();
+                foreach (var person in blPersons)
+                {
+                    person.IsSelected = book.Authors.Any(a => a.PersonId == person.PersonId);
+                }
+
+                book.FullAuthorsList = blPersons;
             }
          
 

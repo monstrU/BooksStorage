@@ -9,6 +9,19 @@ namespace BooksStorage.ViewModels
         [DisplayName("Имя")]
         public string Name { get; set; }
         [DisplayName("Фамилия")]
-        public string Family { get; set; }   
+        public string Family { get; set; }
+
+        public string DisplayAuthorName
+        {
+            get
+            {
+                return string.Format("{0} {1}", Name, Family);
+            }
+        }
+
+        /// <summary>
+        /// автор указан у книги
+        /// </summary>
+        public bool IsSelected { get; set; }
     }
 }

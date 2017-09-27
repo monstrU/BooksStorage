@@ -45,6 +45,8 @@ namespace BooksStorage.ViewModels
 
         public IList<PersonViewModel> Authors { get; set; }
 
+        public IList<PersonViewModel> FullAuthorsList { get; set; }
+
         public static string BookItemidPrefix = "idBook";
 
         public string BookItemId
@@ -55,6 +57,7 @@ namespace BooksStorage.ViewModels
         public BookViewModel()
         {
             Authors = new List<PersonViewModel>();
+            FullAuthorsList = new List<PersonViewModel>();
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
