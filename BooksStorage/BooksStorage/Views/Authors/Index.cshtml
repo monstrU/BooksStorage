@@ -1,10 +1,32 @@
-﻿@model dynamic
+﻿@model IList<BooksStorage.ViewModels.PersonViewModel>
 
 @{
-    ViewBag.Title = "Авторы книг";
+    ViewBag.Title = "Писатели";
 
 }
-<p>авторы</p>
+
+<h2>Писатели</h2>
+<table class="table table-bordered table-hover table-sortable" id="idTabStorage">
+    <thead>
+    <tr>
+        <th class="text-center">Фамилия</th>
+        <th class="text-center">Имя</th>
+        <th class="text-center"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var author in Model)
+    {
+        <tr>
+            <td>@author.Family</td>
+            <td>@author.Name</td>
+            <td>
+                <span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-book-id="@author.PersonId"></span>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 
 @section scripts
 {

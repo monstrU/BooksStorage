@@ -4,6 +4,7 @@
     ViewBag.Title = "Редактор книг";
 
 }
+<h2>Редактор книг</h2>
 <table class="table table-bordered table-hover table-sortable" id="idTabStorage">
     <thead>
         <tr>
@@ -21,7 +22,7 @@
         @foreach (var book in Model)
         {
             @Html.DisplayFor(m => book, "BookItem")
-            }
+        }
     </tbody>
 </table>
 

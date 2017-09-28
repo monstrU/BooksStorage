@@ -1,7 +1,7 @@
-﻿var  PageControllerModule = (function (module) {
+﻿var  AuthorsModule = (function (module) {
 
-    module.LoadPage = function(data) {
-        window.location = "/authors";
+    module.LoadAuthor = function(data) {
+       
     }
     return module;
-}(PageControllerModule || {}));
+}(AuthorsModule || {}));
