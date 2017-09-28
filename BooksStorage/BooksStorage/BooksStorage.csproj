@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BookEditorController.cs" />
     <Compile Include="Controllers\BooksStorageManagerController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
@@ -303,6 +304,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Utils\BookEditorModule.js" />
     <Content Include="Scripts\Utils\FileModule.js" />
+    <Content Include="Scripts\Utils\PageControllerModule.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="uploadify.html" />
     <Content Include="Web.config" />
@@ -320,6 +322,7 @@
     <Content Include="Views\Error\Http404.cshtml" />
     <Content Include="Views\BookEditor\Load.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BookItem.cshtml" />
+    <Content Include="Views\Authors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

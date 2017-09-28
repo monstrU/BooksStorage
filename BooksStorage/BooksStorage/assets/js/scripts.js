@@ -19,7 +19,8 @@ jQuery(document).ready(function() {
 	*/
 	$('a.scroll-link').on('click', function(e) {
 		e.preventDefault();
-		scroll_to($(this), $('nav').outerHeight());
+		var url = $(this).data('pageUrl');
+		window.location = url;
 	});
 	// toggle "navbar-no-bg" class
 	$('.top-content .text').waypoint(function() {

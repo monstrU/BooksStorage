@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Maren - Bootstrap One Page Template</title>
+	<title>Редактор книг</title>
 
 	<title>@ViewBag.Title</title>
 	
@@ -12,7 +12,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600">
-	<!--<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">-->
+	
 	<link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/animate.css">
 	<link rel="stylesheet" href="/assets/css/form-elements.css">
@@ -50,21 +50,12 @@
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="top-navbar-1">
-				<ul class="nav navbar-nav">
-					<li><a class="scroll-link" href="#top-content">Top</a></li>
-					<li><a class="scroll-link" href="#services">Services</a></li>
-					<li><a class="scroll-link" href="#portfolio">Work</a></li>
-					<li><a class="scroll-link" href="#testimonials">Clients</a></li>
-					<li><a class="scroll-link" href="#blog">Blog</a></li>
-					<li><a class="scroll-link" href="#footer">Contact</a></li>
-				</ul>
-				<div class="navbar-text navbar-right">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-instagram"></i></a>
-					<a href="#"><i class="fa fa-pinterest"></i></a>
-				</div>
+			    <ul class="nav navbar-nav">
+			        
+			        <li><a class="scroll-link" href="javascript: void();" data-page-url="@Url.Action("Index", "Home")">Редактор книг</a></li>
+			        <li><a class="scroll-link" href="javascript: void();" data-page-url="@Url.Action("Index", "Authors")">Писатели</a></li>
+			    </ul>
+				<div class="navbar-text navbar-right"></div>
 			</div>
 		</div>
 	</nav>

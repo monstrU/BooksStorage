@@ -17,3 +17,4 @@
 /// <reference path="jquery-3.0.0.slim.min.js" />
 /// <reference path="Utils/BookEditorModule.js" />
 /// <reference path="utils/filemodule.js" />
+/// <reference path="utils/pagecontrollermodule.js" />
