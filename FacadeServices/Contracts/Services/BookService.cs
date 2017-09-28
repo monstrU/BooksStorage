@@ -31,5 +31,10 @@ namespace FacadeServices.Contracts.Services
         {
             return MemoryStorage.LoadPersons();
         }
+
+        public PersonModel LoadPerson(int personId)
+        {
+            return MemoryStorage.LoadPerson(personId);
+        }
     }
 }

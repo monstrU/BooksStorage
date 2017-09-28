@@ -21,9 +21,6 @@
 
 		$("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
 
-	
-
-
 	}
 	module.InitContent = function (event) {
 	    var bookId = parseInt($(event.target).data('bookId'));

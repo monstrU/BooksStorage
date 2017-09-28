@@ -140,5 +140,10 @@ namespace FacadeServices.Contracts.DataBases
         {
             return Persons;
         }
+
+        public PersonModel LoadPerson(int personId)
+        {
+            return Persons.FirstOrDefault(b => b.PersonId == personId);
+        }
     }
 }

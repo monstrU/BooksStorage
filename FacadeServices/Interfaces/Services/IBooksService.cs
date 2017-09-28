@@ -9,5 +9,7 @@ namespace FacadeServices.Interfaces.Services
         BookModel LoadBook(int bookId);
         void UpdateBook(BookModel book);
         IList<PersonModel> LoadPersons();
+
+        PersonModel LoadPerson(int personId);
     }
 }
