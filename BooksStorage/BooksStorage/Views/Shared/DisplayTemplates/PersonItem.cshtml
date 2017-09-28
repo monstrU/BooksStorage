@@ -1,0 +1,13 @@
+﻿@model BooksStorage.ViewModels.PersonViewModel
+
+@{
+    Layout = null;
+}
+
+<tr id="@string.Format("idPerson{0}", Model.PersonId)">
+    <td>@Model.Family</td>
+    <td>@Model.Name</td>
+    <td>
+        <span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-person-id="@Model.PersonId"></span>
+    </td>
+</tr>

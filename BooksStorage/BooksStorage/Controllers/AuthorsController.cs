@@ -21,5 +21,15 @@ namespace BooksStorage.Controllers
             var authors = dbPersons.Select(concerter.Convert).ToList();
             return View("Index", authors);
         }
+
+        public ActionResult PersonItem(int personId)
+        {
+            var personDb = BooksService.LoadPerson(personId);
+
+            var converter = new PersonConverter();
+
+            var person = converter.Convert(personDb);
+            return View("DisplayTemplates/PersonItem", person);
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace FacadeServices.Interfaces.Services
         IList<PersonModel> LoadPersons();
 
         PersonModel LoadPerson(int personId);
+        void UpdatePerson(PersonModel person);
     }
 }

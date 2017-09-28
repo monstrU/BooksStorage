@@ -18,5 +18,8 @@ namespace BooksStorage.ViewModels
                 return string.Format("{0} {1}", Name, Family);
             }
         }
+
+        public static string PersonIdPrefix = "PersonId";
+            
     }
 }

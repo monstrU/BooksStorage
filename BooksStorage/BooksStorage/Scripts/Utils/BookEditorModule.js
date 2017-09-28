@@ -4,7 +4,8 @@
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
     module.BookItemIdPrefix = '';
-    var formatErrorMessage = function(info, errorMessages) {
+
+    var formatErrorMessage = function (info, errorMessages) {
         var message = info;
         if (typeof (errorMessages)=='object')
             message += '\n' + errorMessages.join('\n');

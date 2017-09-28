@@ -18,13 +18,7 @@
     <tbody>
     @foreach (var author in Model)
     {
-        <tr id="@string.Format("idPerson{0}", author.PersonId)">
-            <td>@author.Family</td>
-            <td>@author.Name</td>
-            <td>
-                <span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-person-id="@author.PersonId"></span>
-            </td>
-        </tr>
+       @Html.DisplayFor(a=>author, "PersonItem");
     }
     </tbody>
 </table>
@@ -34,7 +28,7 @@
     <script type="text/javascript">
             $(document).ready(function() {
                 AuthorsModule.InitEvents();
-                AuthorsModule.PersonIdPrefix = '@BookViewModel.BookItemidPrefix';
+                AuthorsModule.PersonIdPrefix = '@PersonViewModel.PersonIdPrefix';
             });
     </script>
 }

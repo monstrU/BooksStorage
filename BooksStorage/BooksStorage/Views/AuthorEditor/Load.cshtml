@@ -4,7 +4,19 @@
     }
 
 <div class="contact-form">
-    <form>
+    @using (Ajax.BeginForm("SavePerson", "api/PersonsStorageManager",
+        null, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            OnSuccess = "AuthorsModule.SuccessSave",
+            OnFailure = "AuthorsModule.FailSave"
+        }, new
+        {
+            role = "form",
+            id = "idSavePerson"
+        }
+        ))
+    {
         <div class="form-group">
             @Html.LabelFor(m => m.Family, new {@class = ""})
             @Html.TextBoxFor(m => m.Family, new {@class = "form-control", placeholder = "Фамилия ..."})
@@ -16,5 +28,5 @@
             @Html.ValidationMessageFor(m => m.Name)
         </div>
         @Html.HiddenFor(m => m.PersonId)
-    </form>
+    }
 </div>

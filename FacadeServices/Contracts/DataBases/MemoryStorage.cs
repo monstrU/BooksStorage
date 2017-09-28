@@ -9,7 +9,7 @@ namespace FacadeServices.Contracts.DataBases
     public class MemoryStorage :IMemoryStorage
     {
         public List<BookModel> Books { get; set; }
-        public IList<PersonModel> Persons { get; set; }
+        public List<PersonModel> Persons { get; set; }
         public MemoryStorage()
         {
             Books = new List<BookModel>();
@@ -144,6 +144,20 @@ namespace FacadeServices.Contracts.DataBases
         public PersonModel LoadPerson(int personId)
         {
             return Persons.FirstOrDefault(b => b.PersonId == personId);
+        }
+
+        public void UpdatePerson(PersonModel person)
+        {
+            var personIndex = Persons.FindIndex(i => i.PersonId == person.PersonId);
+            if (personIndex >= 0)
+            {
+                Persons.RemoveAt(personIndex);
+                Persons.Add(person);
+            }
+            else
+            {
+                throw new Exception($"Не удалось найти писателя {person.Family} в хранилище.");
+            }
         }
     }
 }
