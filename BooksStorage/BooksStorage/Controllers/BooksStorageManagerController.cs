@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
+using BooksStorage.Utils.Interfaces;
 using BooksStorage.ViewModels;
 using DomainModel;
 using FacadeServices.Interfaces.Services;

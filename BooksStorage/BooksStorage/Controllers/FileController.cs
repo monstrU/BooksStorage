@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using BooksStorage.Utils;
+using BooksStorage.Utils.Interfaces;
 using BooksStorage.ViewModels;
 using FacadeServices.Interfaces.Services;
 

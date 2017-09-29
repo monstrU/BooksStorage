@@ -164,8 +164,9 @@
     <Compile Include="Utils\Converters\BooksConverter.cs" />
     <Compile Include="Utils\Converters\PersonEditConverter.cs" />
     <Compile Include="Utils\Converters\PersonConverter.cs" />
-    <Compile Include="Utils\IOperationResult.cs" />
+    <Compile Include="Utils\Interfaces\IOperationResult.cs" />
     <Compile Include="Utils\ModelBinders\WebApi\CustomDateBinder.cs" />
+    <Compile Include="Utils\Validations\ISBNValidator.cs" />
     <Compile Include="Utils\OperationResultGeneric.cs" />
     <Compile Include="Utils\OperationResult.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
@@ -243,7 +244,6 @@
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="assets\contact.php" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -330,7 +330,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Utils\Validations\" />
+    <Folder Include="Utils\ModelValidatorRules\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

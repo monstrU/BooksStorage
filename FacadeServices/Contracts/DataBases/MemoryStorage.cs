@@ -63,7 +63,7 @@ namespace FacadeServices.Contracts.DataBases
                 PublishDate = new DateTime(1991, 01, 02),
                 PagesCount = 412,
                 Publisher = "Эксмо",
-                ISBN = "2-266-11156",
+                ISBN = " 2-266-11156",
                 BookFileName = "",
                 Authors = new List<PersonModel> {Persons[0]}
             });

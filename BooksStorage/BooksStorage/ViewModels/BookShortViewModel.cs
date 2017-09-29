@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using BooksStorage.Utils.Validations;
 
 namespace BooksStorage.ViewModels
 {
@@ -57,8 +59,18 @@ namespace BooksStorage.ViewModels
                 if (book.PublishDate.Year < startPublishDateYear)
                     results.Add(new ValidationResult(
                         $"Дата публикации книги {book.PublishDate:dd.MM.yyyy} должна быть позже {startPublishDateYear} года"));
-                else
-                    results.Add(ValidationResult.Success);
+                
+                var isbnValidator = new ISBNValidator(book.ISBN);
+                if (!isbnValidator.Validate())
+                {
+                    results.Add(new ValidationResult(
+                        $"Задан неверный ISBN книги {book.ISBN}"));
+                }
+            }
+
+            if (!results.Any())
+            {
+                results.Add(ValidationResult.Success);
             }
             return results;
         }
