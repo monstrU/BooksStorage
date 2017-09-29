@@ -2,7 +2,7 @@
 
     module.ModalContentUrl = '/AuthorEditor/Load';
     module.ModalDialogId = 'idAuthorBox';
-    module.PersonItemIdPrefix = '';
+    module.PersonIdPrefix = '';
 
     var formatErrorMessage = function (info, errorMessages) {
         var message = info;
@@ -15,9 +15,10 @@
 
         var dialog = $("#" + module.ModalDialogId);
         dialog.on('shown.bs.modal', module.InitContent);
-
-
-        $("#idTabStorage").on('click', "tbody tr td .edit-button", module.ShowModal);
+        
+        $("#idAuthorStorage").on('click', "tbody tr td .edit-button", module.ShowModal);
+        
+        
 
         $("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
 
@@ -40,7 +41,7 @@
     }
 
 
-    module.ShowModal = function () {
+    module.ShowModal = function (event) {
         var dialog = $("#" + module.ModalDialogId);
         var personId = parseInt($(event.currentTarget).data("personId"));
         dialog.data("personId", personId);
@@ -60,7 +61,7 @@
                 dialog.modal('hide');
 
                 var personId = parseInt(data.DataResult.PersonId);
-                var url = '/auhtor/personitem?personid=' + personId;
+                var url = '/authors/personitem?personid=' + personId;
 
 
                 $.ajax({
@@ -71,7 +72,7 @@
                     traditional: true
                 })
                 .done(function (data) {
-                    $("#" + module.PersonItemIdPrefix + personId).replaceWith(data);
+                    $("#" + module.PersonIdPrefix + personId).replaceWith(data);
                 })
                 .fail(function (data) {
                     alert('Ошибка при загрузки писателя. ');

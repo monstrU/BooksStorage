@@ -83,7 +83,7 @@
         @Html.HiddenFor(m => m.BookId)
         @Html.HiddenFor(m => m.BookFileName)
     }
-    <form role="form" onsubmit="javascript: return false;"></form>
+    
     <div class="form-group">
         @Html.LabelFor(m => m.BookFileName, new { @class = "" })
         <input type="file" name="file" id="file" placeholder="обложка ..." class="form-control">
