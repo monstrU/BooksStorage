@@ -308,6 +308,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\Utils\BookEditorModule.js" />
     <Content Include="Scripts\Utils\FileModule.js" />
     <Content Include="Scripts\Utils\AuthorsModule.js" />
@@ -350,6 +354,9 @@
       <Project>{C2268C7D-91AA-4F60-81A8-8770E489FBFE}</Project>
       <Name>FacadeServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\DataAnnotationsRu.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
