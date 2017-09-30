@@ -31,7 +31,7 @@ namespace BooksStorage.ViewModels
 
         [Required(ErrorMessage = "Необходимо указать дату публикации!")]
         [DisplayName("Дата публикации")]
-        [DataType(DataType.DateTime,ErrorMessage = "Дата публикации должна быть введена в формате дд.мм.гггг")]
+        [DataType(DataType.Text,ErrorMessage = "Дата публикации должна быть введена в формате дд.мм.гггг")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PublishDate { get; set; }
 

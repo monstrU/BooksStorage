@@ -96,7 +96,7 @@ namespace FacadeServices.Contracts.DataBases
                 PublishDate = new DateTime(2011, 4, 2),
                 PagesCount = 201,
                 Publisher = "АСТ",
-                ISBN = "978-5-4453-0154-7",
+                ISBN = "978-5-44-530154-7",
                 BookFileName = "Mihail_Bulgakov__Teatralnyj_roman.jpeg",
                 Authors = new List<PersonModel> {  Persons[5] }
             });

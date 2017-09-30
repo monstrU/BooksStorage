@@ -11,7 +11,8 @@ namespace BooksStorage
                         "~/Scripts/bootstrap.*",
                         "~/Scripts/jquery.validate*",
                         "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/fileinput.*"
+                        "~/Scripts/fileinput.*",
+                        "~/Scripts/jquery.maskedinput*"
                         )
 						.IncludeDirectory("~/Scripts/Utils", "*.js"));
 

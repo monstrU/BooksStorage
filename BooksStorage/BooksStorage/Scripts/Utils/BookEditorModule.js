@@ -31,6 +31,8 @@
 	        url+='?bookId='+bookId;
 	    $("#" + module.ModalDialogId + ' .modal-body').load(url, function () {
 	        $.validator.unobtrusive.parse($("#" + module.ModalDialogId + " form"));
+	        $("#" + module.ModalDialogId + " input[name='ISBN']").mask("999-9-99-999999-9");
+             $("#" +module.ModalDialogId + " input[name='PublishDate']").mask("99.99.9999");
 
 	        FileModule.InitUploadControls(function() {
 	            $("#" + module.ModalDialogId + " button").prop("disabled", true);

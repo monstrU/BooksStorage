@@ -10,6 +10,7 @@
 /// <reference path="../assets/js/wow.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="fileinput.min.js" />
+/// <reference path="jquery.maskedinput.min.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
