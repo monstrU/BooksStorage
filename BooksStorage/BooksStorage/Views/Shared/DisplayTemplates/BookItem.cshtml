@@ -13,10 +13,10 @@
             }
         </ul>
     </td>
-    <td><img class="Model-image" src="@Model.DisplayBookSrcImage" /></td>
+    <td><img class="book-image" src="@Model.DisplayBookSrcImage" /></td>
     <td>@Model.PagesCount</td>
     <td>@Model.Publisher</td>
-    <td>@Model.ISBN</td>
+    <td class="isbn">@Model.ISBN</td>
     <td>@string.Format("{0:dd.MM.yyyy}", Model.PublishDate) </td>
     <td>
         <span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-book-id="@Model.BookId"></span>

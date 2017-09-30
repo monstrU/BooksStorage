@@ -1,5 +1,6 @@
 ﻿.book-image {
-    width: 100px;
+    width: 200px;
+    max-width: 200px;
 }
 .modal-body {
     max-height: 70ex;
@@ -22,4 +23,12 @@ dl.content-items dd{
 .field-validation-error {
     COLOR: #ff8a38;
     font-weight: bold;
+}
+
+ul.authors li{
+    list-style-type: circle;
+    text-align: left;
+}
+.isbn {
+    white-space: nowrap;
 }
