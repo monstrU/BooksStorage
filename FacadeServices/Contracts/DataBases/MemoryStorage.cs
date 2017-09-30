@@ -63,7 +63,7 @@ namespace FacadeServices.Contracts.DataBases
                 PublishDate = new DateTime(1991, 01, 02),
                 PagesCount = 412,
                 Publisher = "Эксмо",
-                ISBN = " 2-266-11156",
+                ISBN = "978-5-17-090468-6",
                 BookFileName = "",
                 Authors = new List<PersonModel> {Persons[0]}
             });
@@ -74,7 +74,7 @@ namespace FacadeServices.Contracts.DataBases
                 PublishDate = new DateTime(2011, 11, 22),
                 PagesCount = 214,
                 Publisher = "Кантата",
-                ISBN = "2-266-14456",
+                ISBN = "978-5-17-056062-2",
                 BookFileName ="",
                 Authors = new List<PersonModel> {  Persons[1], Persons[2]}
             });
@@ -85,7 +85,7 @@ namespace FacadeServices.Contracts.DataBases
                 PublishDate = new DateTime(2014, 4, 3),
                 PagesCount = 431,
                 Publisher = "Terra",
-                ISBN = "978-5-17-057848-1",
+                ISBN = "978-5-17-082983-5",
                 BookFileName = "Arkadij_Strugatskij_Boris_Strugatskij__Piknik_na_obochine.jpeg",
                 Authors = new List<PersonModel> {Persons[3], Persons[4]}
             });
@@ -96,7 +96,7 @@ namespace FacadeServices.Contracts.DataBases
                 PublishDate = new DateTime(2011, 4, 2),
                 PagesCount = 201,
                 Publisher = "АСТ",
-                ISBN = "5-17-015967-6",
+                ISBN = "978-5-4453-0154-7",
                 BookFileName = "Mihail_Bulgakov__Teatralnyj_roman.jpeg",
                 Authors = new List<PersonModel> {  Persons[5] }
             });

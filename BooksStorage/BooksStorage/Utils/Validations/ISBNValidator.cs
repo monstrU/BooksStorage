@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web.UI.WebControls;
 
 namespace BooksStorage.Utils.Validations
 {
@@ -18,8 +19,8 @@ namespace BooksStorage.Utils.Validations
 
         public bool Validate()
         {
-            const int validISBNLenght = 9;
-            const int divider = 11;
+            const int validISBNLenght = 13;
+            const int divider = 10;
             var result = true;
 
             var regex = new Regex("(\\d)",
@@ -28,22 +29,27 @@ namespace BooksStorage.Utils.Validations
                    | RegexOptions.IgnorePatternWhitespace
                    | RegexOptions.Compiled
                    );
+            
             var chars = regex.Matches(ISBN);
 
             var numbers = (chars.Cast<Match>().Select(number => Convert.ToInt16(number.Value))).ToArray();
 
             result = numbers.Length == validISBNLenght;
 
-
+            result = true;
             if (result)
             {
-                int[] constants = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-                int mul = constants.Select((t, index) => t * numbers[index]).Sum();
-                var div = mul % divider;
-
-                var sum = divider - div;
-
-                result = ((mul + sum) % divider) == 0;
+                var numberLength = numbers.Length;
+                var mul2 = 0;
+                for (var i = 0; i < numberLength-1; i++)
+                {
+                    var k = (i + 1) %2;
+                    var mn = k%2 == 1 ? 1 : 3;
+                    mul2 += numbers[i]*mn;
+                }
+                var div2 = mul2%divider;
+                result = (divider-div2) == numbers[numbers.Length - 1];
+               
             }
 
             return result;
