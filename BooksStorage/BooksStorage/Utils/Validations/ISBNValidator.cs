@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
+using BooksStorage.Utils.Interfaces;
 
 namespace BooksStorage.Utils.Validations
 {
     /// <summary>
     /// валидатор 9 значного номера ISBN
     /// </summary>
-    public class ISBNValidator
+    public class ISBNValidator : IBookValidator
     {
         public string ISBN { get; }
         public ISBNValidator(string isbn)

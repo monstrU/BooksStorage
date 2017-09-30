@@ -55,10 +55,11 @@ namespace BooksStorage.ViewModels
             var results = new List<ValidationResult>();
             if (book != null)
             {
-                const int startPublishDateYear = 1980;
-                if (book.PublishDate.Year < startPublishDateYear)
+                var publishDateValidator= new PublishDateValidator(book.PublishDate);
+                
+                if (!publishDateValidator.Validate())
                     results.Add(new ValidationResult(
-                        $"Дата публикации книги {book.PublishDate:dd.MM.yyyy} должна быть позже {startPublishDateYear} года"));
+                        $"Дата публикации книги {book.PublishDate:dd.MM.yyyy} должна быть позже {PublishDateValidator.StartPublishDateYear} года"));
                 
                 var isbnValidator = new ISBNValidator(book.ISBN);
                 if (!isbnValidator.Validate())

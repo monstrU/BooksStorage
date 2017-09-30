@@ -166,9 +166,11 @@
     <Compile Include="Utils\Converters\PersonConverter.cs" />
     <Compile Include="Utils\Interfaces\IOperationResult.cs" />
     <Compile Include="Utils\ModelBinders\WebApi\CustomDateBinder.cs" />
+    <Compile Include="Utils\Interfaces\IBookValidator.cs" />
     <Compile Include="Utils\Validations\ISBNValidator.cs" />
     <Compile Include="Utils\OperationResultGeneric.cs" />
     <Compile Include="Utils\OperationResult.cs" />
+    <Compile Include="Utils\Validations\PublishDateValidator.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BookShortViewModel.cs" />
     <Compile Include="ViewModels\BookEditViewModel.cs" />
