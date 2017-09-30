@@ -543,7 +543,8 @@ ul.navbar-nav {
 
 /***** Footer *****/
 
-footer {
+footer,
+.form-container {
 	padding: 10px 0 0 0;
 	background: #444;
 	color: #aaa;

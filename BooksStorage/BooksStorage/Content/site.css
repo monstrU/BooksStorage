@@ -18,3 +18,8 @@ dl.content-items dd{
     margin-left: 4ex;
     text-align: left;
 }
+
+.field-validation-error {
+    COLOR: #ff8a38;
+    font-weight: bold;
+}
