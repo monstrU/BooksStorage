@@ -6,6 +6,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using BooksStorage.Utils;
 using FacadeServices.Contracts.DataBases;
 using FacadeServices.Contracts.Services;
 using FacadeServices.Interfaces.DataBases;
@@ -27,8 +28,13 @@ namespace BooksStorage
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
             DependencyResolverInit();
+
+            ClientDataTypeModelValidatorProvider.ResourceClassKey = "DataAnnotationsRu";
+            DefaultModelBinder.ResourceClassKey = "DataAnnotationsRu";
+       
+
         }
-            
+
         private static void DependencyResolverInit()
         {
             var builder = new ContainerBuilder();
