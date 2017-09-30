@@ -41,5 +41,10 @@ namespace FacadeServices.Contracts.Services
         {
             MemoryStorage.UpdatePerson(person);
         }
+
+        public void DeleteBook(int bookId)
+        {
+            MemoryStorage.DeleteBook(bookId);
+        }
     }
 }

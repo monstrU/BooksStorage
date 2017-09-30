@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Web.Http;
 using System.Web.Http.Results;
 using BooksStorage.Utils;
@@ -72,6 +73,31 @@ namespace BooksStorage.Controllers
             return CreateResult(result);
         }
 
-      
+        [ActionName("DeleteBook")]
+        [HttpGet]
+        public IHttpActionResult DeleteBook(int bookId)
+        {
+            IOperationResult result;
+            try
+            {
+                BooksService.DeleteBook(bookId);
+                result = new OperationResult
+                {
+                    IsSuccess = true
+                };
+               
+            }
+            catch (Exception ex)
+            {
+                result = new OperationResult
+                {
+                    IsSuccess = false
+                };
+                result.ErrorMessages.Add(ex.Message);
+            }
+            return CreateResult(result);
+        }
+        
+
     }
 }

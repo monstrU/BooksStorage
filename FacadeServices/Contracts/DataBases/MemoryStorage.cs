@@ -159,5 +159,18 @@ namespace FacadeServices.Contracts.DataBases
                 throw new Exception($"Не удалось найти писателя {person.Family} в хранилище.");
             }
         }
+
+        public void DeleteBook(int bookId)
+        {
+            var bookIndex = Books.FindIndex(i => i.BookId == bookId);
+            if (bookIndex >= 0)
+            {
+                Books.RemoveAt(bookIndex);
+            }
+            else
+            {
+                throw new Exception($"Не удалось найти книгу с идентификатором {bookId} в хранилище.");
+            }
+        }
     }
 }

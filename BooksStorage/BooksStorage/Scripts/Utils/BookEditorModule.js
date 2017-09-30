@@ -20,6 +20,11 @@
 
 		$("#idTabStorage").on('click', "tbody tr td .edit-button", module.ShowModal);
 
+		$("#idTabStorage").on('click', "tbody tr td .glyphicon-remove", module.DeleteBook);
+
+
+		$("#idTabStorage").on('click', "thead  .glyphicon-plus", module.AddBook);
+
 		$("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
 
 	}
@@ -51,7 +56,30 @@
 		
 	}
 
-	module.ShowModal = function (event) {
+	module.AddBook = function(event) {
+	    alert('add');
+	}
+
+	module.DeleteBook = function (event) {
+	    var bookId = parseInt($(event.currentTarget).data("bookId"));
+
+	    var url = '/api/booksStorageManager/deletebook?bookid=' + bookId;
+	    $.ajax({
+	        method: 'GET',
+	        url: url,
+	        cache: false,
+	        contentType: 'html',
+	        traditional: true
+	    })
+          .done(function (data) {
+              $("#" + module.BookItemIdPrefix + bookId).remove();
+          })
+          .fail(function (data) {
+              alert('Ошибка при удалении книги. ');
+          });
+	}
+
+    module.ShowModal = function (event) {
 	    
 	    var dialog = $("#" + module.ModalDialogId);
 	    var bookId = parseInt($(event.currentTarget).data("bookId"));

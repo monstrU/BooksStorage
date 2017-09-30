@@ -19,7 +19,8 @@
     <td class="isbn">@Model.ISBN</td>
     <td>@string.Format("{0:dd.MM.yyyy}", Model.PublishDate) </td>
     <td>
-        <span class="glyphicon glyphicon-pencil btn btn-default edit-button" data-book-id="@Model.BookId"></span>
+        <span class="glyphicon glyphicon-pencil btn btn-default edit-button" title="редактировать" data-book-id="@Model.BookId"></span>
     </td>
+    <td><span class="glyphicon glyphicon-remove btn btn-default" aria-hidden="true" title="удалить книгу" data-book-id="@Model.BookId"></span></td>
 </tr>
 
