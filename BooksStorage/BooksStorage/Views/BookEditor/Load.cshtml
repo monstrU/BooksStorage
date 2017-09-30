@@ -27,11 +27,7 @@
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Название ..." })
             @Html.ValidationMessageFor(m => m.Title)
         </div>
-        <div class="form-group">
-            <label class="" for="contact-subject">Автор</label>
-            <input type="text" name="subject" placeholder="Автор ..." class="contact-subject form-control" id="contact-subject">
-
-        </div>
+  
         <div class="form-group">
             @Html.LabelFor(m => m.PagesCount, new { @class = "" })
             @Html.TextBoxFor(m => m.PagesCount, new { @class = "form-control", placeholder = "Количество страниц ..." })
@@ -39,7 +35,7 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Publisher, new { @class = "" })
-            @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", placeholder = "Дата публикации ..." })
+            @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", placeholder = "Издательство ..." })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.PublishDate, new { @class = "" })
