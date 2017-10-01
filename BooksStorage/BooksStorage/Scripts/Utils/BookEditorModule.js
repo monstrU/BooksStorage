@@ -28,6 +28,9 @@
 
 		$("#" + module.ModalDialogId + ' .btn-default').on('click', module.Save);
 
+		$.validator.methods.date = function (value, element) {
+		    return this.optional(element) || moment(value, "DD.MM.YYYY", true).isValid();
+		}
 	}
 	module.InitContent = function (event) {
 	    var bookId = parseInt($(event.target).data('bookId'));
@@ -40,9 +43,7 @@
 	        $("#" + module.ModalDialogId + " input[name='ISBN']").mask("999-9-99-999999-9");
 	        $("#" + module.ModalDialogId + " input[name='PublishDate']").mask("99.99.9999");
 
-	        $.validator.methods.date = function (value, element) {
-	            return this.optional(element) || moment(value, "DD.MM.YYYY", true).isValid();
-	        }
+	  
 
 	        FileModule.InitUploadControls(function() {
 	            $("#" + module.ModalDialogId + " button").prop("disabled", true);

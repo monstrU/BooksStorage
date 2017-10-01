@@ -15,10 +15,12 @@ namespace BooksStorage
 
             config.Services.Insert(typeof(ModelBinderProvider), 0,
                 new SimpleModelBinderProvider(typeof(DateTime), new CustomDateBinder()));
-        
 
-        // Web API routes
-        config.MapHttpAttributeRoutes();
+            config.Services.Insert(typeof(ModelBinderProvider), 0,
+                new SimpleModelBinderProvider(typeof(Nullable<DateTime>), new CustomDateBinder()));
+
+            // Web API routes
+            config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
