@@ -1,0 +1,62 @@
+﻿@model BooksStorage.ViewModels.BookEditViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Title, new { @class = "" })
+    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Название ..." })
+    @Html.ValidationMessageFor(m => m.Title)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.PagesCount, new { @class = "" })
+    @Html.TextBoxFor(m => m.PagesCount, new { @class = "form-control", placeholder = "Количество страниц ..." })
+    @Html.ValidationMessageFor(m => m.PagesCount)
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Publisher, new { @class = "" })
+    @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control", placeholder = "Издательство ..." })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.PublishDate, new { @class = "" })
+    @Html.TextBoxFor(m => m.PublishDate, "{0:dd.MM.yyyy}", new { @class = "form-control", placeholder = "Дата публикации" })
+
+    @Html.ValidationMessageFor(m => m.PublishDate)
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.ISBN, new { @class = "" })
+    @Html.TextBoxFor(m => m.ISBN, new { @class = "form-control", placeholder = "ISBN" })
+</div>
+<div class="form-group">
+    <label>Авторы</label>
+    <div class="container-fluid">
+        <dl class="content-items">
+
+
+            @for (int index = 0; index < Model.FullAuthorsList.Count; index++)
+            {
+                var author = Model.FullAuthorsList[index];
+                <dt>
+                    @Html.CheckBoxFor(a => Model.FullAuthorsList[index].IsSelected, new { id = string.Format("idAuthor{0}", author.PersonId) })
+
+                    @Html.HiddenFor(a => Model.FullAuthorsList[index].PersonId)
+                    @Html.HiddenFor(a => Model.FullAuthorsList[index].Family)
+                    @Html.HiddenFor(a => Model.FullAuthorsList[index].Name)
+
+                </dt>
+                        <dd>
+
+                            <label for="@string.Format("idAuthor{0}", author.PersonId)">@author.DisplayAuthorName</label>
+                        </dd>
+            }
+        </dl>
+
+
+
+
+    </div>
+</div>
+@Html.HiddenFor(m => m.BookId)
+@Html.HiddenFor(m => m.BookFileName)

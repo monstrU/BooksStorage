@@ -43,7 +43,8 @@ namespace BooksStorage.Controllers
                 {
                     if (!string.IsNullOrEmpty(file.Headers.ContentDisposition.FileName))
                     {
-                        filename = file.Headers.ContentDisposition.FileName.Trim('\"');
+                        var f = file.Headers.ContentDisposition.FileName.Trim('\"');
+                        filename = $"{Path.GetFileNameWithoutExtension(f)}.{Math.Abs(DateTime.Now.GetHashCode())}{Path.GetExtension(f)}";
                         byte[] fileArray = await file.ReadAsByteArrayAsync();
 
                         using (FileStream fs = new FileStream(root + filename, FileMode.Create))

@@ -20,14 +20,14 @@ namespace BooksStorage.Utils.Converters
 
         public BookModel Convert(BookEditViewModel source)
         {
-            var converter = new PersonEditConverter(Persons);
+            var converter = new PersonEditConverter();
             return new BookModel
             {
-                BookId = source.BookId,
+                BookId = source.BookId.GetValueOrDefault(),
                 Title = source.Title,
-                PublishDate = source.PublishDate,
+                PublishDate = source.PublishDate.GetValueOrDefault(),
                 Publisher = source.Publisher,
-                PagesCount = source.PagesCount,
+                PagesCount = source.PagesCount.GetValueOrDefault(),
                 ISBN = source.ISBN,
                 BookFileName = source.BookFileName,
                 Authors = source.FullAuthorsList

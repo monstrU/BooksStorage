@@ -121,12 +121,12 @@
     <value>Поле {0} должно быть датой. </value>
   </data>
   <data name="FieldMustBeNumeric" xml:space="preserve">
-    <value>The field {0} must be a number.</value>
+    <value>Поле {0} должно быть числом.</value>
   </data>
   <data name="PropertyValueInvalid" xml:space="preserve">
-    <value>The value '{0}' is not valid for {1}.</value>
+    <value>Значение '{0}'  неверно для  {1}.</value>
   </data>
   <data name="PropertyValueRequired" xml:space="preserve">
-    <value>A value is required.</value>
+    <value>Требуется значение.</value>
   </data>
 </root>

@@ -1,6 +1,7 @@
 ﻿var BookEditorModule = (function (module) {
 
     module.ModalContentUrl = '/BookEditor/Load';
+   // module.ModalContentUrl = '/BookEditor/AddBook';
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
     module.BookItemIdPrefix = '';
@@ -56,8 +57,10 @@
 		
 	}
 
-	module.AddBook = function(event) {
-	    alert('add');
+	module.AddBook = function (event) {
+	    var dialog = $("#" + module.ModalDialogId);
+	    dialog.data("bookId", '');
+	    dialog.modal('show');
 	}
 
 	module.DeleteBook = function (event) {
@@ -112,6 +115,37 @@
                 .done(function (data) {
                         $("#" + module.BookItemIdPrefix + bookId).replaceWith(data);
                     })
+                .fail(function (data) {
+                    alert('Ошибка при загрузки книги. ');
+                });
+            } else {
+                alert(formatErrorMessage("Ошибка при обновлении книги !", data.ErrorMessages));
+            }
+        }
+    }
+
+    module.SuccessSaveAddNewBook = function (data) {
+        if (typeof (data) == 'object') {
+            if (data.IsSuccess) {
+                var dialog = $("#" + module.ModalDialogId);
+
+                dialog.data("bookId", '');
+                dialog.modal('hide');
+
+                var bookId = parseInt(data.DataResult.BookId);
+                var url = '/home/bookitem?bookid=' + bookId;
+
+
+                $.ajax({
+                    method: 'GET',
+                    url: url,
+                    cache: false,
+                    contentType: 'html',
+                    traditional: true
+                })
+                .done(function (data) {
+                    $("#idTabStorage tbody").append(data);
+                })
                 .fail(function (data) {
                     alert('Ошибка при загрузки книги. ');
                 });

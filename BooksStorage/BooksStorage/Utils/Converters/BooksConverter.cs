@@ -18,11 +18,11 @@ namespace BooksStorage.Utils.Converters
             var converter = new PersonConverter();
             return new BookModel
             {
-                BookId = source.BookId,
+                BookId = source.BookId.GetValueOrDefault(),
                 Title = source.Title,
-                PublishDate = source.PublishDate,
+                PublishDate = source.PublishDate.GetValueOrDefault(),
                 Publisher = source.Publisher,
-                PagesCount = source.PagesCount,
+                PagesCount = source.PagesCount.GetValueOrDefault(),
                 ISBN = source.ISBN,
                 BookFileName = source.BookFileName,
                 Authors = source.Authors.Select(converter.Convert).ToArray()

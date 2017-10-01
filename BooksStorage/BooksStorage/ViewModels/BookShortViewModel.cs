@@ -13,7 +13,7 @@ namespace BooksStorage.ViewModels
     public class BookShortViewModel : IValidatableObject
     {
         public static string BookItemidPrefix = "idBook";
-        public int BookId { get; set; }
+        public Nullable<int> BookId { get; set; }
 
         [Required(ErrorMessage = "Введите название")]
         [StringLength(30, ErrorMessage = "Длина названия не должна превышать 30 символов.")]
@@ -21,21 +21,19 @@ namespace BooksStorage.ViewModels
         public string  Title { get; set; }
 
         [DisplayName("Количество страниц")]
-        [Required(ErrorMessage = "Введите количество страниц")]
+        [Required(ErrorMessage = "Введите количество страниц", AllowEmptyStrings = true)]
         [Range(1,10000,ErrorMessage =  "Количество страниц не должно превышать 10 000")]
-        public int PagesCount { get; set; }
+        public Nullable<int> PagesCount { get; set; }
 
         [DisplayName("Издательство")]
         [StringLength(30, ErrorMessage = "Длина названия издательства не должна превышать 30 символов.")]
         public string Publisher { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать дату публикации!")]
-        //[Required(ErrorMessageResourceType = typeof(DataAnnotationsRu), ErrorMessageResourceName = "FieldMustBeDate")]
         [DisplayName("Дата публикации")]
         [DataType(DataType.Text,ErrorMessage = "Дата публикации должна быть введена в формате дд.мм.гггг")]
-        //[Display(DataType.Date, ResourceType = typeof(DataAnnotationsRu))]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime PublishDate { get; set; }
+        public Nullable<DateTime> PublishDate { get; set; }
 
         [Required]
         [DisplayName("ISBN")]
@@ -45,7 +43,7 @@ namespace BooksStorage.ViewModels
         [DisplayName("Обложка")]
         public string BookFileName { get; set; }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if ((validationContext.ObjectType.BaseType != null && validationContext.ObjectType.BaseType != typeof(BookShortViewModel)) ||
                 (validationContext.ObjectType.BaseType == null && validationContext.ObjectType != typeof(BookShortViewModel)))
@@ -57,7 +55,7 @@ namespace BooksStorage.ViewModels
             var results = new List<ValidationResult>();
             if (book != null)
             {
-                var publishDateValidator= new PublishDateValidator(book.PublishDate);
+                var publishDateValidator= new PublishDateValidator(book.PublishDate.GetValueOrDefault());
                 
                 if (!publishDateValidator.Validate())
                     results.Add(new ValidationResult(

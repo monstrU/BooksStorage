@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -25,6 +26,9 @@ namespace BooksStorage.Controllers
             if (!bookId.HasValue)
             {
                 book = new BookEditViewModel();
+                var authorsDb = BooksService.LoadPersons();
+                var converter= new PersonEditConverter(new List<PersonModel>());
+                book.FullAuthorsList = authorsDb.Select(converter.Convert).ToList();
             }
             else
             {
@@ -34,9 +38,8 @@ namespace BooksStorage.Controllers
                 book = converter.Convert(bookDb);
                 
             }
-
-
-            return View("Load", book);
+            
+            return View(book.IsNewBook ? "AddNewBook" : "Load", book);
         }
 
 	

@@ -46,5 +46,10 @@ namespace FacadeServices.Contracts.Services
         {
             MemoryStorage.DeleteBook(bookId);
         }
+
+        public void AddBook(BookModel bookDb)
+        {
+            MemoryStorage.Add(bookDb);
+        }
     }
 }

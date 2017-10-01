@@ -8,7 +8,7 @@ using BooksStorage.Utils.Interfaces;
 namespace BooksStorage.Utils.Validations
 {
     /// <summary>
-    /// валидатор 9 значного номера ISBN
+    /// валидатор 13 значного номера ISBN
     /// </summary>
     public class ISBNValidator : IBookValidator
     {

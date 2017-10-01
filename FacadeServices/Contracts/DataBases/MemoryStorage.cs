@@ -104,6 +104,7 @@ namespace FacadeServices.Contracts.DataBases
 
         public void Add(BookModel book)
         {
+            book.BookId = GenerateNewBookId();
             Books.Add(book);
         }
 
@@ -171,6 +172,11 @@ namespace FacadeServices.Contracts.DataBases
             {
                 throw new Exception($"Не удалось найти книгу с идентификатором {bookId} в хранилище.");
             }
+        }
+
+        private int GenerateNewBookId()
+        {
+            return Books.Max(b => b.BookId) + 1;
         }
     }
 }

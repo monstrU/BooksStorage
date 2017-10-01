@@ -1,0 +1,27 @@
+﻿
+@model BooksStorage.ViewModels.BookEditViewModel
+
+@{
+    Layout = null;
+}
+
+
+<div class="contact-form">
+
+@using (Ajax.BeginForm(null, null,
+    null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "BookEditorModule.SuccessSaveAddNewBook",
+        OnFailure = "BookEditorModule.FailSave",
+        Url = "api/BooksStorageManager/AddBook"
+    }, new
+    {
+        role = "form",
+        id = "idSaveBook"
+    }
+    ))
+{
+    @Html.Partial("BookFormItem", Model)
+}
+</div>

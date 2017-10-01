@@ -14,6 +14,10 @@ namespace BooksStorage.Utils.Converters
         {
             Persons = persons;
         }
+        public PersonEditConverter()
+        {
+            Persons = new List<PersonModel>();
+        }
         public PersonModel Convert(PersonEditViewModel source)
         {
             return new PersonModel

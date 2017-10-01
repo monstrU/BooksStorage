@@ -3,7 +3,7 @@
 namespace BooksStorage.ViewModels
 {
     /// <summary>
-    /// книга для просмотра книги
+    /// модель  для просмотра книги
     /// </summary>
     public class BookViewModel : BookShortViewModel
     {
@@ -21,6 +21,8 @@ namespace BooksStorage.ViewModels
         {
             get { return string.Format("{0}{1}", BookItemidPrefix, BookId); }
         }
+
+    
 
         public BookViewModel()
         {

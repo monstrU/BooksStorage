@@ -15,5 +15,6 @@ namespace FacadeServices.Interfaces.DataBases
         PersonModel LoadPerson(int personId);
         void UpdatePerson(PersonModel person);
         void DeleteBook(int bookId);
+   
     }
 }

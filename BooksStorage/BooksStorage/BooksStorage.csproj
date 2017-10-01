@@ -172,6 +172,7 @@
     <Compile Include="Utils\Interfaces\IOperationResult.cs" />
     <Compile Include="Utils\ModelBinders\WebApi\CustomDateBinder.cs" />
     <Compile Include="Utils\Interfaces\IBookValidator.cs" />
+    <Compile Include="Utils\Validations\BookAuthorsValidator.cs" />
     <Compile Include="Utils\Validations\ISBNValidator.cs" />
     <Compile Include="Utils\OperationResultGeneric.cs" />
     <Compile Include="Utils\OperationResult.cs" />
@@ -340,10 +341,11 @@
     <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\AuthorEditor\Load.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\PersonItem.cshtml" />
+    <Content Include="Views\BookEditor\AddNewBook.cshtml" />
+    <Content Include="Views\BookEditor\BookFormItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Utils\ModelValidatorRules\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

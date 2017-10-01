@@ -70,7 +70,7 @@ namespace BooksStorage.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The field {0} must be a number..
+        ///   Looks up a localized string similar to Поле {0} должно быть числом..
         /// </summary>
         public static string FieldMustBeNumeric {
             get {
@@ -79,7 +79,7 @@ namespace BooksStorage.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The value &apos;{0}&apos; is not valid for {1}..
+        ///   Looks up a localized string similar to Значение &apos;{0}&apos;  неверно для  {1}..
         /// </summary>
         public static string PropertyValueInvalid {
             get {
@@ -88,7 +88,7 @@ namespace BooksStorage.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A value is required..
+        ///   Looks up a localized string similar to Требуется значение..
         /// </summary>
         public static string PropertyValueRequired {
             get {

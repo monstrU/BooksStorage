@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 using BooksStorage.Utils;
@@ -15,6 +16,24 @@ namespace BooksStorage.Controllers
             else
                 httpResult = Content(HttpStatusCode.InternalServerError, result);
             return httpResult;
+        }
+
+        protected IOperationResult CreateErrorResult()
+        {
+            IOperationResult result;
+            result = new OperationResult();
+            foreach (var state in ModelState)
+            {
+                if (state.Value.Errors.Any())
+                {
+                    foreach (var error in state.Value.Errors)
+                    {
+                        result.ErrorMessages.Add(error.ErrorMessage);
+                    }
+                    result.IsSuccess = false;
+                }
+            }
+            return result;
         }
     }
 }
