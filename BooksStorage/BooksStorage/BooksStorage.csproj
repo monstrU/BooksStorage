@@ -343,6 +343,7 @@
     <Content Include="Views\Shared\DisplayTemplates\PersonItem.cshtml" />
     <Content Include="Views\BookEditor\AddNewBook.cshtml" />
     <Content Include="Views\BookEditor\BookFormItem.cshtml" />
+    <Content Include="Views\AuthorEditor\PersonItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

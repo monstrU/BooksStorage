@@ -4,12 +4,13 @@
     }
 
 <div class="contact-form">
-    @using (Ajax.BeginForm("SavePerson", "api/PersonsStorageManager",
+    @using (Ajax.BeginForm(null, null,
         null, new AjaxOptions
         {
             HttpMethod = "POST",
             OnSuccess = "AuthorsModule.SuccessSave",
-            OnFailure = "AuthorsModule.FailSave"
+            OnFailure = "AuthorsModule.FailSave",
+            Url = "api/PersonsStorageManager/SavePerson"
         }, new
         {
             role = "form",
@@ -17,16 +18,6 @@
         }
         ))
     {
-        <div class="form-group">
-            @Html.LabelFor(m => m.Family, new {@class = ""})
-            @Html.TextBoxFor(m => m.Family, new {@class = "form-control", placeholder = "Фамилия ..."})
-            @Html.ValidationMessageFor(m => m.Family)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Name, new {@class = ""})
-            @Html.TextBoxFor(m => m.Name, new {@class = "form-control", placeholder = "Имя ..."})
-            @Html.ValidationMessageFor(m => m.Name)
-        </div>
-        @Html.HiddenFor(m => m.PersonId)
+        @Html.Partial("PersonItem", Model)
     }
 </div>
