@@ -1,0 +1,23 @@
+﻿@model BooksStorage.ViewModels.PersonViewModel
+@{
+    Layout = null;
+}
+
+<div class="contact-form">
+    @using (Ajax.BeginForm(null, null,
+                null, new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "AuthorsModule.SuccessSaveAddPerson",
+                    OnFailure = "AuthorsModule.FailSave",
+                    Url = "api/PersonsStorageManager/AddPerson"
+                }, new
+                {
+                    role = "form",
+                    id = "idSavePerson"
+                }
+                ))
+    {
+        @Html.Partial("PersonItem", Model)
+    }
+</div>

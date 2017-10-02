@@ -51,5 +51,15 @@ namespace FacadeServices.Contracts.Services
         {
             MemoryStorage.Add(bookDb);
         }
+
+        public void AddPerson(PersonModel person)
+        {
+            MemoryStorage.Add(person);
+        }
+
+        public void DeletePerson(int personId)
+        {
+            MemoryStorage.DeletePerson(personId);
+        }
     }
 }

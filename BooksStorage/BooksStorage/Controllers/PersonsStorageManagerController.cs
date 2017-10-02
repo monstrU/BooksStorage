@@ -39,18 +39,7 @@ namespace BooksStorage.Controllers
             IOperationResult result;
             if (!ModelState.IsValid)
             {
-                result = new OperationResult();
-                foreach (var state in ModelState)
-                {
-                    if (state.Value.Errors.Any())
-                    {
-                        foreach (var error in state.Value.Errors)
-                        {
-                            result.ErrorMessages.Add(error.ErrorMessage);
-                        }
-                        result.IsSuccess = false;
-                    }
-                }
+                result = CreateErrorResult();
             }
             else
             {
@@ -59,6 +48,7 @@ namespace BooksStorage.Controllers
                     var converter = new PersonConverter();
                     var personDb = converter.Convert(person);
                     BooksService.UpdatePerson(personDb);
+                    person.PersonId = personDb.PersonId;
                     result = new OperationResult<PersonViewModel>
                     {
                         DataResult = person,
@@ -79,6 +69,68 @@ namespace BooksStorage.Controllers
             return CreateResult(result);
         }
 
-      
+        [ActionName("AddPerson")]
+        [HttpPost]
+        public IHttpActionResult AddPerson([FromBody] PersonEditViewModel person)
+        {
+            IOperationResult result;
+            if (!ModelState.IsValid)
+            {
+                result = CreateErrorResult();
+            }
+            else
+            {
+                try
+                {
+                    
+                    var converter = new PersonEditConverter();
+                    var personDb = converter.Convert(person);
+
+                    BooksService.AddPerson(personDb);
+                    person.PersonId = personDb.PersonId;
+                    result = new OperationResult<PersonEditViewModel>
+                    {
+                        DataResult = person,
+                        IsSuccess = true
+                    };
+
+                }
+                catch (Exception ex)
+                {
+                    result = new OperationResult
+                    {
+                        IsSuccess = false
+                    };
+                    result.ErrorMessages.Add(ex.Message);
+                }
+            }
+
+            return CreateResult(result);
+        }
+
+        [ActionName("DeletePerson")]
+        [HttpGet]
+        public IHttpActionResult DeletePerson(int personId)
+        {
+            IOperationResult result;
+            try
+            {
+                BooksService.DeletePerson(personId);
+                result = new OperationResult
+                {
+                    IsSuccess = true
+                };
+
+            }
+            catch (Exception ex)
+            {
+                result = new OperationResult
+                {
+                    IsSuccess = false
+                };
+                result.ErrorMessages.Add(ex.Message);
+            }
+            return CreateResult(result);
+        }
     }
 }

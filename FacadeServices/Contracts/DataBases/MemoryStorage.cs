@@ -110,6 +110,7 @@ namespace FacadeServices.Contracts.DataBases
 
         public void Add(PersonModel person)
         {
+            person.PersonId = GenerateNewPersonId();
             Persons.Add(person);
         }
 
@@ -174,9 +175,31 @@ namespace FacadeServices.Contracts.DataBases
             }
         }
 
+        public void DeletePerson(int personId)
+        {
+            if (Books.Any(b => b.Authors.Any(a => a.PersonId == personId)))
+            {
+                throw new Exception($"Нельзя удалить писателя {personId}, так как с ним связана книга.");
+            }
+
+            var personIndex = Books.FindIndex(i => i.BookId == personId);
+            if (personIndex >= 0)
+            {
+                Persons.RemoveAt(personIndex);
+            }
+            else
+            {
+                throw new Exception($"Не удалось найти писателя с идентификатором {personIndex} в хранилище.");
+            }
+        }
+
         private int GenerateNewBookId()
         {
             return Books.Max(b => b.BookId) + 1;
+        }
+        private int GenerateNewPersonId()
+        {
+            return Persons.Max(b => b.PersonId) + 1;
         }
     }
 }
