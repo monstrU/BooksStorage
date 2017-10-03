@@ -9,5 +9,6 @@ namespace BooksStorage.ViewModels
         /// автор указан у книги
         /// </summary>
         public bool IsSelected { get; set; }
+        
     }
 }

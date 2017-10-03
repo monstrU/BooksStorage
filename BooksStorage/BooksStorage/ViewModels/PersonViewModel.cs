@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -6,7 +7,7 @@ namespace BooksStorage.ViewModels
 {
     public class PersonViewModel
     {
-        public int PersonId { get; set; }
+        public Nullable<int> PersonId { get; set; }
         [Required(ErrorMessage = "Заполните поле Имя")]
         [DisplayName("Имя")]
         public string Name { get; set; }
@@ -22,7 +23,11 @@ namespace BooksStorage.ViewModels
             }
         }
 
-        public static string PersonIdPrefix = "idPerson";
-            
+       public static string PersonIdPrefix = "idPerson";
+
+        public bool IsNewPerson
+        {
+            get { return PersonId.HasValue; }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace BooksStorage.Utils.Converters
                 BookId = source.BookId,
                 Person = new PersonModel()
                 {
-                    PersonId = source.Person.PersonId,
+                    PersonId = source.Person.PersonId.GetValueOrDefault(),
                     Name = source.Person.Name,
                     Family = source.Person.Family
                 }

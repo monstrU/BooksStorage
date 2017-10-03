@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
-using BooksStorage.Utils;
 using BooksStorage.Utils.Converters;
 using BooksStorage.ViewModels;
-using DomainModel;
 using FacadeServices.Interfaces.Services;
 
 namespace BooksStorage.Controllers
@@ -34,8 +27,8 @@ namespace BooksStorage.Controllers
                 
             }
 
-
-            return View("Load", person);
+            return View(!person.IsNewPerson ? "AddNewPerson" : "Load", person);
+            
         }
 
 	

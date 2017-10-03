@@ -1,7 +1,6 @@
 ﻿var BookEditorModule = (function (module) {
 
     module.ModalContentUrl = '/BookEditor/Load';
-   // module.ModalContentUrl = '/BookEditor/AddBook';
 	module.ModalDialogId = 'idBookBox';
 	module.BookManagerUrl = '/api/BooksStorageManager';
     module.BookItemIdPrefix = '';
@@ -22,7 +21,6 @@
 		$("#idTabStorage").on('click', "tbody tr td .edit-button", module.ShowModal);
 
 		$("#idTabStorage").on('click', "tbody tr td .glyphicon-remove", module.DeleteBook);
-
 
 		$("#idTabStorage").on('click', "thead  .glyphicon-plus", module.AddBook);
 

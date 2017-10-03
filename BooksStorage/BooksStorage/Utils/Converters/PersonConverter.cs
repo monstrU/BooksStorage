@@ -10,7 +10,7 @@ namespace BooksStorage.Utils.Converters
         {
             return new PersonModel
             {
-                PersonId = source.PersonId,
+                PersonId = source.PersonId.GetValueOrDefault(),
                 Family = source.Family,
                 Name = source.Name
             };

@@ -179,10 +179,10 @@ namespace FacadeServices.Contracts.DataBases
         {
             if (Books.Any(b => b.Authors.Any(a => a.PersonId == personId)))
             {
-                throw new Exception($"Нельзя удалить писателя {personId}, так как с ним связана книга.");
+                throw new Exception("Нельзя удалить писателя , так как с ним связана книга.");
             }
 
-            var personIndex = Books.FindIndex(i => i.BookId == personId);
+            var personIndex = Persons.FindIndex(i => i.PersonId == personId);
             if (personIndex >= 0)
             {
                 Persons.RemoveAt(personIndex);
