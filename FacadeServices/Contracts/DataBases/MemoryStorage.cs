@@ -64,7 +64,7 @@ namespace FacadeServices.Contracts.DataBases
                 PagesCount = 412,
                 Publisher = "Эксмо",
                 ISBN = "978-5-17-090468-6",
-                BookFileName = "",
+                BookFileName = "voina_i_mir.jpg",
                 Authors = new List<PersonModel> {Persons[0]}
             });
             Books.Add(new BookModel
@@ -75,7 +75,7 @@ namespace FacadeServices.Contracts.DataBases
                 PagesCount = 214,
                 Publisher = "Кантата",
                 ISBN = "978-5-17-056062-2",
-                BookFileName ="",
+                BookFileName = "zolotoy-telenok.jpg",
                 Authors = new List<PersonModel> {  Persons[1], Persons[2]}
             });
             Books.Add(new BookModel

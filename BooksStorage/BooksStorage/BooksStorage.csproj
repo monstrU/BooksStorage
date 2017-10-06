@@ -293,6 +293,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\Arkadij_Strugatskij_Boris_Strugatskij__Piknik_na_obochine.jpeg" />
     <Content Include="Images\Mihail_Bulgakov__Teatralnyj_roman.jpeg" />
+    <Content Include="Images\voina_i_mir.jpg" />
+    <Content Include="Images\zolotoy-telenok.jpg" />
     <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
